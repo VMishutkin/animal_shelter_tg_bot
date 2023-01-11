@@ -9,7 +9,6 @@ import com.pengrad.telegrambot.request.SendPhoto;
 import com.pengrad.telegrambot.response.GetFileResponse;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
 import pro.sky.telegrambot.entitydatabase.Person;
 import pro.sky.telegrambot.entitydatabase.Report;
 import pro.sky.telegrambot.exceptions.TelegramBotExceptionAPI;
@@ -33,13 +32,14 @@ public class ShelterService {
     private final PersonRepository personRepository;
     private final ReportRepository reportRepository;
     private Logger logger = LoggerFactory.getLogger(ShelterService.class);
-    @Autowired
     private TelegramBot telegramBot;
 
-    public ShelterService(Shelter shelter, PersonRepository contactRepository, ReportRepository reportRepository) {
+
+    public ShelterService(Shelter shelter, PersonRepository contactRepository, ReportRepository reportRepository, TelegramBot telegramBot) {
         this.shelter = shelter;
         this.personRepository = contactRepository;
         this.reportRepository = reportRepository;
+        this.telegramBot = telegramBot;
     }
 
     public void getContactFromChat(Message inputMessage) {
@@ -232,4 +232,6 @@ public class ShelterService {
     public String printContactsList() {
         return personRepository.findAll().stream().map(Objects::toString).collect(Collectors.joining("\n"));
     }
+
+
 }

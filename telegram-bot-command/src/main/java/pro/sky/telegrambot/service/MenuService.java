@@ -31,7 +31,7 @@ public class MenuService {
 
     private final Map<Long, ShelterType> choosedSheltersForUsers;
 
-    public MenuService(ReplyKeyboards keyboards, TelegramBot telegramBot, ShelterService dogShelterService, ShelterService catShelterService) {
+    public MenuService(ReplyKeyboards keyboards, TelegramBot telegramBot, DogShelterService dogShelterService, CatShelterService catShelterService) {
         this.keyboards = keyboards;
         this.telegramBot = telegramBot;
         this.dogShelterService = dogShelterService;
@@ -123,7 +123,6 @@ public class MenuService {
 
     private void sendMenuAndReply(long chatId, String command, ShelterService shelterService) {
         String replyTextMessage;
-        SendMessage message;
         switch (command) {
             case MenuItemsNames.TO_MAIN_MENU:
                 sendReply(chatId, WELCOME_MESSAGE_MENU_MAIN, keyboards.mainMenuKeyboards);
@@ -188,21 +187,26 @@ public class MenuService {
                 sendReply(chatId, replyTextMessage, keyboards.recommendationMenuKeyboard);
                 break;
             case MenuItemsNames.ADOPT_DOG_APPROVED_CYNOLOGYSTS:
-                replyTextMessage = shelterService.getApprovedCynologysts();
-                sendReply(chatId, replyTextMessage, keyboards.adoptDogMenuKeyboards);
-                message = new SendMessage(chatId, replyTextMessage);
+                if (shelterService instanceof DogShelterService) {
+                    DogShelterService dogShelterService = (DogShelterService) shelterService;
+                    replyTextMessage = dogShelterService.getApprovedCynologysts();
+                    sendReply(chatId, replyTextMessage, keyboards.adoptDogMenuKeyboards);
+                }
                 break;
             case MenuItemsNames.RECOMMENDATIONS_CYNOLOGYSTS_ADVICES:
-                replyTextMessage = shelterService.getCynologystsAdvices();
-                sendReply(chatId, replyTextMessage, keyboards.recommendationMenuKeyboard);
-                message = new SendMessage(chatId, replyTextMessage);
+                if (shelterService instanceof DogShelterService) {
+                    DogShelterService dogShelterService = (DogShelterService) shelterService;
+                    replyTextMessage = dogShelterService.getCynologystsAdvices();
+                    sendReply(chatId, replyTextMessage, keyboards.recommendationMenuKeyboard);
+                }
                 break;
             case MenuItemsNames.ADOPT_DOG_DECLINE_REASONS:
                 replyTextMessage = shelterService.getDeclineReasons();
                 sendReply(chatId, replyTextMessage, keyboards.adoptDogMenuKeyboards);
                 break;
             default:
-                message = new SendMessage(chatId, SORRY_MESSAGE);
+                sendReply(chatId, SORRY_MESSAGE, keyboards.adoptDogMenuKeyboards);
+                break;
         }
     }
 

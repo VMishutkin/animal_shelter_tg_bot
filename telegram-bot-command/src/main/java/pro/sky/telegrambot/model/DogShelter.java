@@ -20,7 +20,7 @@ public class DogShelter extends Shelter {
                 FileNames.TRANSPORTATION_RECOMMENDATIONS_DOG_SHELTER, FileNames.HOME_IMPROVEMENTS_FOR_PUPPIES_DOG_SHELTER,
                 FileNames.HOME_IMPROVEMENTS_FOR_DISABLED_DOG_SHELTER, FileNames.HOME_IMPROVEMENTS_FOR_ADULTS_DOG_SHELTER);
         this.cynologystsAdvices = readStringsFromFile(cynologystsAdvicesFileName);
-        this.approvedCynologystsFileName = readStringsFromFile(cynologystsAdvicesFileName);
+        this.approvedCynologystsFileName = readStringsFromFile(approvedCynologystsFileName);
 
     }
 
@@ -28,7 +28,7 @@ public class DogShelter extends Shelter {
     public void updateInfoAboutShelter() {
         super.updateInfoAboutShelter();
         this.cynologystsAdvices = readStringsFromFile(cynologystsAdvicesFileName);
-        this.approvedCynologystsFileName = readStringsFromFile(cynologystsAdvicesFileName);
+        this.approvedCynologystsFileName = readStringsFromFile(approvedCynologystsFileName);
     }
 
 

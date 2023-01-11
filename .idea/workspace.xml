@@ -4,48 +4,31 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f40732f1-8c74-4428-932f-5530b0c72575" name="Changes" comment="nothing">
-      <change afterPath="$PROJECT_DIR$/telegram-bot-command/src/main/java/pro/sky/telegrambot/model/CatShelter.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/telegram-bot-command/src/main/java/pro/sky/telegrambot/model/DogShelter.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/telegram-bot-command/src/main/java/pro/sky/telegrambot/model/ShelterType.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/telegram-bot-command/src/main/java/pro/sky/telegrambot/service/CatShelterService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/telegram-bot-command/src/main/java/pro/sky/telegrambot/service/DogShelterService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/telegram-bot-command/src/main/resources/dogShelterFiles/approvedCynologysts.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/telegram-bot-command/src/main/resources/dogShelterFiles/cynologystsAdvices.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/telegram-bot-command/src/main/resources/dogShelterFiles/declineReasons.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/telegram-bot-command/src/main/resources/dogShelterFiles/documentsForAdoption.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/telegram-bot-command/src/main/resources/dogShelterFiles/greetings.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/telegram-bot-command/src/main/resources/dogShelterFiles/homeImprovementsForAdults.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/telegram-bot-command/src/main/resources/dogShelterFiles/homeImprovementsForDisabled.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/telegram-bot-command/src/main/resources/dogShelterFiles/homeImprovementsForPuppies" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/telegram-bot-command/src/main/resources/dogShelterFiles/homeImprovementsForPuppies.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/telegram-bot-command/src/main/resources/dogShelterFiles/meetingRules.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/telegram-bot-command/src/main/resources/dogShelterFiles/safetyPrecuations.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/telegram-bot-command/src/main/resources/dogShelterFiles/scheduleAndAddress.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/telegram-bot-command/src/main/resources/dogShelterFiles/shelterDescription.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/telegram-bot-command/src/main/resources/dogShelterFiles/transportationRecommendations.txt" afterDir="false" />
+    <list default="true" id="f40732f1-8c74-4428-932f-5530b0c72575" name="Changes" comment="не смотреть">
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_16_12_2022_23_25__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_16_12_2022_23_25__Changes_.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/telegram-bot-command/src/main/java/pro/sky/telegrambot/Buttons/ReplyKeyboards.java" beforeDir="false" afterPath="$PROJECT_DIR$/telegram-bot-command/src/main/java/pro/sky/telegrambot/Buttons/ReplyKeyboards.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/telegram-bot-command/src/main/java/pro/sky/telegrambot/constants/FileNames.java" beforeDir="false" afterPath="$PROJECT_DIR$/telegram-bot-command/src/main/java/pro/sky/telegrambot/constants/FileNames.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/telegram-bot-command/src/main/java/pro/sky/telegrambot/constants/MenuItemsNames.java" beforeDir="false" afterPath="$PROJECT_DIR$/telegram-bot-command/src/main/java/pro/sky/telegrambot/constants/MenuItemsNames.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/telegram-bot-command/src/main/java/pro/sky/telegrambot/constants/Strings.java" beforeDir="false" afterPath="$PROJECT_DIR$/telegram-bot-command/src/main/java/pro/sky/telegrambot/constants/Strings.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/telegram-bot-command/src/main/java/pro/sky/telegrambot/model/DogShelter.java" beforeDir="false" afterPath="$PROJECT_DIR$/telegram-bot-command/src/main/java/pro/sky/telegrambot/model/DogShelter.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/telegram-bot-command/src/main/java/pro/sky/telegrambot/model/Shelter.java" beforeDir="false" afterPath="$PROJECT_DIR$/telegram-bot-command/src/main/java/pro/sky/telegrambot/model/Shelter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/telegram-bot-command/src/main/java/pro/sky/telegrambot/service/CatShelterService.java" beforeDir="false" afterPath="$PROJECT_DIR$/telegram-bot-command/src/main/java/pro/sky/telegrambot/service/CatShelterService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/telegram-bot-command/src/main/java/pro/sky/telegrambot/service/DogShelterService.java" beforeDir="false" afterPath="$PROJECT_DIR$/telegram-bot-command/src/main/java/pro/sky/telegrambot/service/DogShelterService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/telegram-bot-command/src/main/java/pro/sky/telegrambot/service/MenuService.java" beforeDir="false" afterPath="$PROJECT_DIR$/telegram-bot-command/src/main/java/pro/sky/telegrambot/service/MenuService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/telegram-bot-command/src/main/java/pro/sky/telegrambot/service/ShelterService.java" beforeDir="false" afterPath="$PROJECT_DIR$/telegram-bot-command/src/main/java/pro/sky/telegrambot/service/ShelterService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/telegram-bot-command/src/main/java/pro/sky/telegrambot/service/TelegramBotUpdatesListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/telegram-bot-command/src/main/java/pro/sky/telegrambot/service/TelegramBotUpdatesListener.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/telegram-bot-command/src/main/resources/approvedCynologysts.txt" beforeDir="false" afterPath="$PROJECT_DIR$/telegram-bot-command/src/main/resources/catShelterFiles/approvedCynologysts.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/telegram-bot-command/src/main/resources/cynologystsAdvices.txt" beforeDir="false" afterPath="$PROJECT_DIR$/telegram-bot-command/src/main/resources/catShelterFiles/cynologystsAdvices.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/telegram-bot-command/src/main/resources/declineReasons.txt" beforeDir="false" afterPath="$PROJECT_DIR$/telegram-bot-command/src/main/resources/catShelterFiles/declineReasons.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/telegram-bot-command/src/main/resources/documentsForAdoption.txt" beforeDir="false" afterPath="$PROJECT_DIR$/telegram-bot-command/src/main/resources/catShelterFiles/documentsForAdoption.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/telegram-bot-command/src/main/resources/greetings.txt" beforeDir="false" afterPath="$PROJECT_DIR$/telegram-bot-command/src/main/resources/catShelterFiles/greetings.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/telegram-bot-command/src/main/resources/homeImprovementsForAdults.txt" beforeDir="false" afterPath="$PROJECT_DIR$/telegram-bot-command/src/main/resources/catShelterFiles/homeImprovementsForAdults.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/telegram-bot-command/src/main/resources/homeImprovementsForDisabled.txt" beforeDir="false" afterPath="$PROJECT_DIR$/telegram-bot-command/src/main/resources/catShelterFiles/homeImprovementsForDisabled.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/telegram-bot-command/src/main/resources/homeImprovementsForPuppies" beforeDir="false" afterPath="$PROJECT_DIR$/telegram-bot-command/src/main/resources/catShelterFiles/homeImprovementsForPuppies" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/telegram-bot-command/src/main/resources/homeImprovementsForPuppies.txt" beforeDir="false" afterPath="$PROJECT_DIR$/telegram-bot-command/src/main/resources/catShelterFiles/homeImprovementsForPuppies.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/telegram-bot-command/src/main/resources/meetingRules.txt" beforeDir="false" afterPath="$PROJECT_DIR$/telegram-bot-command/src/main/resources/catShelterFiles/meetingRules.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/telegram-bot-command/src/main/resources/safetyPrecuations.txt" beforeDir="false" afterPath="$PROJECT_DIR$/telegram-bot-command/src/main/resources/catShelterFiles/safetyPrecuations.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/telegram-bot-command/src/main/resources/scheduleAndAddress.txt" beforeDir="false" afterPath="$PROJECT_DIR$/telegram-bot-command/src/main/resources/catShelterFiles/scheduleAndAddress.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/telegram-bot-command/src/main/resources/shelterDescription.txt" beforeDir="false" afterPath="$PROJECT_DIR$/telegram-bot-command/src/main/resources/catShelterFiles/shelterDescription.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/telegram-bot-command/src/main/resources/transportationRecommendations.txt" beforeDir="false" afterPath="$PROJECT_DIR$/telegram-bot-command/src/main/resources/catShelterFiles/transportationRecommendations.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/telegram-bot-command/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/telegram-bot-command/src/main/resources/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/telegram-bot-command/target/classes/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/telegram-bot-command/target/classes/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/telegram-bot-command/target/classes/pro/sky/telegrambot/Buttons/ReplyKeyboards.class" beforeDir="false" afterPath="$PROJECT_DIR$/telegram-bot-command/target/classes/pro/sky/telegrambot/Buttons/ReplyKeyboards.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/telegram-bot-command/target/classes/pro/sky/telegrambot/TelegramBotApplication.class" beforeDir="false" afterPath="$PROJECT_DIR$/telegram-bot-command/target/classes/pro/sky/telegrambot/TelegramBotApplication.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/telegram-bot-command/target/classes/pro/sky/telegrambot/constants/AdminMenuItems.class" beforeDir="false" afterPath="$PROJECT_DIR$/telegram-bot-command/target/classes/pro/sky/telegrambot/constants/AdminMenuItems.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/telegram-bot-command/target/classes/pro/sky/telegrambot/constants/ChatSettings.class" beforeDir="false" afterPath="$PROJECT_DIR$/telegram-bot-command/target/classes/pro/sky/telegrambot/constants/ChatSettings.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/telegram-bot-command/target/classes/pro/sky/telegrambot/constants/FileNames.class" beforeDir="false" afterPath="$PROJECT_DIR$/telegram-bot-command/target/classes/pro/sky/telegrambot/constants/FileNames.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/telegram-bot-command/target/classes/pro/sky/telegrambot/constants/MenuItemsNames.class" beforeDir="false" afterPath="$PROJECT_DIR$/telegram-bot-command/target/classes/pro/sky/telegrambot/constants/MenuItemsNames.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/telegram-bot-command/target/classes/pro/sky/telegrambot/constants/Strings.class" beforeDir="false" afterPath="$PROJECT_DIR$/telegram-bot-command/target/classes/pro/sky/telegrambot/constants/Strings.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/telegram-bot-command/target/classes/pro/sky/telegrambot/entitydatabase/Person.class" beforeDir="false" afterPath="$PROJECT_DIR$/telegram-bot-command/target/classes/pro/sky/telegrambot/entitydatabase/Person.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/telegram-bot-command/target/classes/pro/sky/telegrambot/entitydatabase/Report.class" beforeDir="false" afterPath="$PROJECT_DIR$/telegram-bot-command/target/classes/pro/sky/telegrambot/entitydatabase/Report.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/telegram-bot-command/target/classes/pro/sky/telegrambot/model/Shelter.class" beforeDir="false" afterPath="$PROJECT_DIR$/telegram-bot-command/target/classes/pro/sky/telegrambot/model/Shelter.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/telegram-bot-command/target/classes/pro/sky/telegrambot/repositoty/PersonRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/telegram-bot-command/target/classes/pro/sky/telegrambot/repositoty/PersonRepository.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/telegram-bot-command/target/classes/pro/sky/telegrambot/service/ShelterService.class" beforeDir="false" afterPath="$PROJECT_DIR$/telegram-bot-command/target/classes/pro/sky/telegrambot/service/ShelterService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/telegram-bot-command/target/classes/pro/sky/telegrambot/service/TelegramBotScheduler.class" beforeDir="false" afterPath="$PROJECT_DIR$/telegram-bot-command/target/classes/pro/sky/telegrambot/service/TelegramBotScheduler.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/telegram-bot-command/target/classes/pro/sky/telegrambot/service/TelegramBotUpdatesListener.class" beforeDir="false" afterPath="$PROJECT_DIR$/telegram-bot-command/target/classes/pro/sky/telegrambot/service/TelegramBotUpdatesListener.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -67,6 +50,9 @@
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="JpbToolWindowState">
+    <option name="isToolWindowVisible" value="false" />
+  </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
@@ -82,24 +68,24 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RequestMappingsPanelOrder0": "0",
-    "RequestMappingsPanelOrder1": "1",
-    "RequestMappingsPanelWidth0": "75",
-    "RequestMappingsPanelWidth1": "75",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "jdk.selected.JAVA_MODULE": "openjdk-19",
-    "last_opened_file_path": "C:/Users/user/IdeaProjects/telegram-bot-command/telegram-bot-command/src/main/resources",
-    "project.structure.last.edited": "Modules",
-    "project.structure.proportion": "0.15",
-    "project.structure.side.proportion": "0.2",
-    "settings.editor.selected.configurable": "preferences.lookFeel",
-    "spring.configuration.checksum": "7b0ed8c8c9087e5bcaf8917932d6604c"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RequestMappingsPanelOrder0&quot;: &quot;0&quot;,
+    &quot;RequestMappingsPanelOrder1&quot;: &quot;1&quot;,
+    &quot;RequestMappingsPanelWidth0&quot;: &quot;75&quot;,
+    &quot;RequestMappingsPanelWidth1&quot;: &quot;75&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;jdk.selected.JAVA_MODULE&quot;: &quot;openjdk-19&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/user/IdeaProjects/telegram-bot-command/telegram-bot-command/src/main/resources&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.lookFeel&quot;,
+    &quot;spring.configuration.checksum&quot;: &quot;7b0ed8c8c9087e5bcaf8917932d6604c&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\user\IdeaProjects\telegram-bot-command\telegram-bot-command\src\main\resources" />
@@ -121,6 +107,19 @@
       <option name="MAIN_CLASS_NAME" value="pro.sky.telegrambot.TelegramBotApplicationTests" />
       <option name="METHOD_NAME" value="contextLoads" />
       <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="JetRunConfigurationType">
+      <module name="telegram-bot" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="KotlinStandaloneScriptRunConfigurationType">
+      <module name="telegram-bot" />
+      <option name="filePath" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -209,6 +208,17 @@
     <MESSAGE value="test" />
     <MESSAGE value="nothing" />
     <option name="LAST_COMMIT_MESSAGE" value="nothing" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/telegram-bot-command/src/main/java/pro/sky/telegrambot/model/DogShelter.java</url>
+          <line>21</line>
+          <option name="timeStamp" value="4" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/telegram_bot_command$TelegramBotApplication.ic" NAME="TelegramBotApplication Coverage Results" MODIFIED="1670158920483" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
