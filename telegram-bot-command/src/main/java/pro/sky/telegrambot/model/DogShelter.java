@@ -8,7 +8,6 @@ public class DogShelter extends Shelter {
 
     private String cynologystsAdvices;
     private String approvedCynologysts;
-
     private String approvedCynologystsFileName = FileNames.APPROVED_CYNOLOGYSTS_DOG_SHELTER;
     private String cynologystsAdvicesFileName = FileNames.CYNOLOGYSTS_ADVICES_DOG_SHELTER;
 

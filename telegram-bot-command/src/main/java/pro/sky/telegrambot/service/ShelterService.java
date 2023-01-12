@@ -130,6 +130,10 @@ public class ShelterService {
         shelter.updateInfoAboutShelter();
     }
 
+    public String getGreetings(){
+       return shelter.getGreetings();
+    }
+
 
 
 
@@ -156,6 +160,7 @@ public class ShelterService {
             logger.error("Ошибка. Удаление не возможно, запись не найдена");
         }
     }
+
 
     public void appointGuardian(String id) {
         try {

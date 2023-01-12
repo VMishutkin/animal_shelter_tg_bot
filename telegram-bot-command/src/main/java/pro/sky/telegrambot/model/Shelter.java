@@ -131,6 +131,10 @@ public abstract class Shelter {
         return "Не могу считать информацию";
     }
 
+    public String getGreetings() {
+        return greetings;
+    }
+
     public String getAbout() {
         return description;
     }

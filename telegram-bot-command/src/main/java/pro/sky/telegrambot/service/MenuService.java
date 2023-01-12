@@ -124,7 +124,8 @@ public class MenuService {
         String replyTextMessage;
         switch (command) {
             case MenuItemsNames.TO_MAIN_MENU:
-                sendReply(chatId, WELCOME_MESSAGE_MENU_MAIN, keyboards.mainMenuKeyboards);
+                replyTextMessage = shelterService.getGreetings();
+                sendReply(chatId, replyTextMessage, keyboards.mainMenuKeyboards);
                 break;
             case MenuItemsNames.TO_SHELTER_MENU:
                 choosedSheltersForUsers.remove(chatId);
@@ -195,6 +196,8 @@ public class MenuService {
                     DogShelterService dogShelterService = (DogShelterService) shelterService;
                     replyTextMessage = dogShelterService.getApprovedCynologysts();
                     sendReply(chatId, replyTextMessage, keyboards.adoptDogMenuKeyboards);
+                } else {
+                    sendReply(chatId, CHOOSED_WRONG_SHELTER, keyboards.adoptDogMenuKeyboards);
                 }
                 break;
             case MenuItemsNames.RECOMMENDATIONS_CYNOLOGYSTS_ADVICES:
@@ -202,6 +205,8 @@ public class MenuService {
                     DogShelterService dogShelterService = (DogShelterService) shelterService;
                     replyTextMessage = dogShelterService.getCynologystsAdvices();
                     sendReply(chatId, replyTextMessage, keyboards.recommendationMenuKeyboard);
+                } else {
+                    sendReply(chatId, CHOOSED_WRONG_SHELTER, keyboards.recommendationMenuKeyboard);
                 }
                 break;
             case MenuItemsNames.ADOPT_DOG_DECLINE_REASONS:
@@ -235,7 +240,7 @@ public class MenuService {
     private void sendAdminMenuAndReply(long chatId, String command, ShelterService shelterService) {
         switch (command) {
             case AdminMenuItems.TO_MAIN_MENU:
-                sendReply(chatId, DEFAULT_MESSAGE, keyboards.сontrolMainMenu);
+                sendReply(chatId, DEFAULT_MESSAGE, keyboards.controlMainMenu);
                 break;
             case AdminMenuItems.TO_CONTACTS_MENU:
                 sendReply(chatId, CONTACTS_MENU, keyboards.contactsControlMenu);
