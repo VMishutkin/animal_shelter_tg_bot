@@ -5,35 +5,33 @@ import com.pengrad.telegrambot.model.Message;
 import com.pengrad.telegrambot.model.request.Keyboard;
 import com.pengrad.telegrambot.request.SendMessage;
 import org.springframework.stereotype.Service;
-import pro.sky.telegrambot.button.ReplyKeyboards;
-import pro.sky.telegrambot.constant.AdminMenuItems;
-import pro.sky.telegrambot.constant.ChatSettings;
-import pro.sky.telegrambot.constant.MenuItemsNames;
-import pro.sky.telegrambot.constant.Strings;
-import pro.sky.telegrambot.constant.AdminResponses;
-import pro.sky.telegrambot.constant.Responses;
-import pro.sky.telegrambot.constant.ShelterType;
+import pro.sky.telegrambot.Buttons.ReplyKeyboards;
+import pro.sky.telegrambot.constants.AdminMenuItems;
+import pro.sky.telegrambot.constants.ChatSettings;
+import pro.sky.telegrambot.constants.MenuItemsNames;
+import pro.sky.telegrambot.constants.Strings;
+import pro.sky.telegrambot.constants.AdminResponses;
+import pro.sky.telegrambot.constants.Responses;
+import pro.sky.telegrambot.constants.ShelterType;
 
 import java.util.HashMap;
 import java.util.Map;
 
-import static pro.sky.telegrambot.constant.Strings.*;
+import static pro.sky.telegrambot.constants.Strings.*;
 
-
-/**
- * Класс управления через меню в телеграмм боте
- */
 @Service
 public class MenuService {
     private final ReplyKeyboards keyboards;
     private final TelegramBot telegramBot;
+
     private final ShelterService dogShelterService;
     private final ShelterService catShelterService;
     private final Map<Long, Responses> pendingResponses;
     private final Map<Long, AdminResponses> adminPendingResponses;
+
     private final Map<Long, ShelterType> choosedSheltersForUsers;
 
-    public MenuService(ReplyKeyboards keyboards, TelegramBot telegramBot, ShelterService dogShelterService, ShelterService catShelterService) {
+    public MenuService(ReplyKeyboards keyboards, TelegramBot telegramBot, DogShelterService dogShelterService, CatShelterService catShelterService) {
         this.keyboards = keyboards;
         this.telegramBot = telegramBot;
         this.dogShelterService = dogShelterService;
@@ -43,13 +41,9 @@ public class MenuService {
         this.choosedSheltersForUsers = new HashMap<Long, ShelterType>();
     }
 
-
-    /**
-     *
-     * @param message
-     */
     public void shelterServiceChooser(Message message) {
         long chatId = message.chat().id();
+
         if (userChosenShelter(chatId)) {
             switch (choosedSheltersForUsers.get(chatId)) {
                 case CAT_SHELTER:
@@ -64,55 +58,41 @@ public class MenuService {
         }
     }
 
-    /**
-     *
-     * @param message
-     * @param shelterService
-     */
     private void messageProcessing(Message message, ShelterService shelterService) {
         long chatId = message.chat().id();
         String messageText = message.text();
+        //String username, String messageText
         if (isAdministratorUser(chatId)) {
             if (adminPendingResponses.containsKey(chatId)) {
-                adminRequestProcessing(chatId, messageText, shelterService);
+                adminRequestProccessing(chatId, messageText, shelterService);
             } else {
                 sendAdminMenuAndReply(chatId, messageText, shelterService);
             }
         } else {
             if (pendingResponses.containsKey(chatId)) {
-                requestProcessing(message, shelterService);
+                requestProccessing(message, shelterService);
             } else {
                 sendMenuAndReply(chatId, messageText, shelterService);
             }
         }
     }
 
-    /**
-     *
-     * @param message
-     * @param shelterService
-     */
-    private void requestProcessing(Message message, ShelterService shelterService) {
+    private void requestProccessing(Message message, ShelterService shelterService) {
         Long chatId = message.chat().id();
         switch (pendingResponses.get(chatId)) {
             case REPORT:
-                shelterService.setReport(message);
+                shelterService.getReport(message);
                 break;
             case REQUEST:
                 shelterService.getRequest(message);
                 break;
             case CONTACT:
-                shelterService.setContactFromChat(message);
+                shelterService.getContactFromChat(message);
                 break;
         }
         pendingResponses.remove(chatId);
     }
 
-    /**
-     *
-     * @param chatId
-     * @param messageText
-     */
     private void chooseShelter(long chatId, String messageText) {
         if (messageText.equals(MenuItemsNames.DOG_SHELTER_CHOOSE)) {
             choosedSheltersForUsers.put(chatId, ShelterType.DOG_SHELTER);
@@ -125,49 +105,33 @@ public class MenuService {
         }
     }
 
-    /**
-     *
-     * @param chatId
-     * @return
-     */
     private boolean userChosenShelter(long chatId) {
         return choosedSheltersForUsers.containsKey(chatId);
     }
 
-    /**
-     *
-     * @param chatId
-     * @return
-     */
     private boolean isAdministratorUser(long chatId) {
         return chatId == ChatSettings.volunteerChatId;
     }
 
-    /**
-     *
-     * @param chatId
-     * @param replyMessageText
-     * @param keyboard
-     */
     private void sendReply(long chatId, String replyMessageText, Keyboard keyboard) {
         SendMessage message = new SendMessage(chatId, replyMessageText);
         message.replyMarkup(keyboard);
         telegramBot.execute(message);
     }
 
-    /**
-     *
-     * @param chatId
-     * @param command
-     * @param shelterService
-     */
+
     private void sendMenuAndReply(long chatId, String command, ShelterService shelterService) {
         String replyTextMessage;
-        SendMessage message;
         switch (command) {
             case MenuItemsNames.TO_MAIN_MENU:
-                sendReply(chatId, WELCOME_MESSAGE_MENU_MAIN, keyboards.mainMenuKeyboards);
+                replyTextMessage = shelterService.getGreetings();
+                sendReply(chatId, replyTextMessage, keyboards.mainMenuKeyboards);
                 break;
+            case MenuItemsNames.TO_SHELTER_MENU:
+                choosedSheltersForUsers.remove(chatId);
+                sendReply(chatId, SHELTER_MENU_GREETINGS, keyboards.shelterMenu);
+                break;
+
             case MenuItemsNames.TO_INFO_ABOUT_SHELTER:
                 sendReply(chatId, WELCOME_MESSAGE_MENU_ABOUT_SHELTER, keyboards.aboutShelterMenuKeyboards);
                 break;
@@ -192,7 +156,7 @@ public class MenuService {
                 sendReply(chatId, replyTextMessage, keyboards.aboutShelterMenuKeyboards);
                 break;
             case MenuItemsNames.ABOUT_SHELTER_ADDRESS_SCHEDULE:
-                replyTextMessage = shelterService.getScheduleAndAddress();
+                replyTextMessage = shelterService.getScheduleAndAdress();
                 sendReply(chatId, replyTextMessage, keyboards.aboutShelterMenuKeyboards);
                 break;
             case MenuItemsNames.ABOUT_SHELTER_SAFETY_PRECUATUINS:
@@ -205,7 +169,7 @@ public class MenuService {
                 sendReply(chatId, replyTextMessage, keyboards.adoptDogMenuKeyboards);
                 break;
             case MenuItemsNames.ADOPT_DOG_DOCUMENTS:
-                replyTextMessage = shelterService.getDocumentsForAdoption();
+                replyTextMessage = shelterService.getDocumentsForAdpotion();
                 sendReply(chatId, replyTextMessage, keyboards.adoptDogMenuKeyboards);
                 break;
             case MenuItemsNames.ADOPT_DOG_RECOMENDATIONS:
@@ -228,31 +192,34 @@ public class MenuService {
                 sendReply(chatId, replyTextMessage, keyboards.recommendationMenuKeyboard);
                 break;
             case MenuItemsNames.ADOPT_DOG_APPROVED_CYNOLOGYSTS:
-                //replyTextMessage = shelterService.getApprovedCynologysts();
-                //sendReply(chatId, replyTextMessage, keyboards.adoptDogMenuKeyboards);
-                //message = new SendMessage(chatId, replyTextMessage);
+                if (shelterService instanceof DogShelterService) {
+                    DogShelterService dogShelterService = (DogShelterService) shelterService;
+                    replyTextMessage = dogShelterService.getApprovedCynologysts();
+                    sendReply(chatId, replyTextMessage, keyboards.adoptDogMenuKeyboards);
+                } else {
+                    sendReply(chatId, CHOOSED_WRONG_SHELTER, keyboards.adoptDogMenuKeyboards);
+                }
                 break;
             case MenuItemsNames.RECOMMENDATIONS_CYNOLOGYSTS_ADVICES:
-                //replyTextMessage = shelterService.getCynologystsAdvices();
-                //sendReply(chatId, replyTextMessage, keyboards.recommendationMenuKeyboard);
-                //message = new SendMessage(chatId, replyTextMessage);
+                if (shelterService instanceof DogShelterService) {
+                    DogShelterService dogShelterService = (DogShelterService) shelterService;
+                    replyTextMessage = dogShelterService.getCynologystsAdvices();
+                    sendReply(chatId, replyTextMessage, keyboards.recommendationMenuKeyboard);
+                } else {
+                    sendReply(chatId, CHOOSED_WRONG_SHELTER, keyboards.recommendationMenuKeyboard);
+                }
                 break;
             case MenuItemsNames.ADOPT_DOG_DECLINE_REASONS:
                 replyTextMessage = shelterService.getDeclineReasons();
                 sendReply(chatId, replyTextMessage, keyboards.adoptDogMenuKeyboards);
                 break;
             default:
-                message = new SendMessage(chatId, SORRY_MESSAGE);
+                sendReply(chatId, SORRY_MESSAGE, keyboards.adoptDogMenuKeyboards);
+                break;
         }
     }
 
-    /**
-     *
-     * @param chatid
-     * @param inputText
-     * @param shelterService
-     */
-    private void adminRequestProcessing(long chatid, String inputText, ShelterService shelterService) {
+    private void adminRequestProccessing(long chatid, String inputText, ShelterService shelterService) {
         switch (adminPendingResponses.get(chatid)) {
             case DELETE:
                 shelterService.deleteContact(inputText);
@@ -270,16 +237,10 @@ public class MenuService {
         adminPendingResponses.remove(chatid);
     }
 
-    /**
-     *
-     * @param chatId
-     * @param command
-     * @param shelterService
-     */
     private void sendAdminMenuAndReply(long chatId, String command, ShelterService shelterService) {
         switch (command) {
             case AdminMenuItems.TO_MAIN_MENU:
-                sendReply(chatId, DEFAULT_MESSAGE, keyboards.сontrolMainMenu);
+                sendReply(chatId, DEFAULT_MESSAGE, keyboards.controlMainMenu);
                 break;
             case AdminMenuItems.TO_CONTACTS_MENU:
                 sendReply(chatId, CONTACTS_MENU, keyboards.contactsControlMenu);
@@ -312,5 +273,6 @@ public class MenuService {
                 break;
         }
     }
+
 
 }

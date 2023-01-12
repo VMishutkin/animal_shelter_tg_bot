@@ -45,7 +45,7 @@ public class ReplyKeyboards {
     /**
      * Главное меню администратора
      */
-    public final Keyboard сontrolMainMenu;
+    public final Keyboard controlMainMenu;
     /**
      * Меню администратора по управлению контактами
      */
@@ -58,7 +58,7 @@ public class ReplyKeyboards {
 
 
     public ReplyKeyboards() {
-        сontrolMainMenu = generateControlMainKeyboard();
+        controlMainMenu = generateControlMainKeyboard();
         contactsControlMenu = generateContactsMenuKeyboard();
         reportsControlMenu = generateControlTwoKeyboard();
 

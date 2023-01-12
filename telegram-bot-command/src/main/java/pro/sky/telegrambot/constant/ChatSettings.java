@@ -4,6 +4,6 @@ package pro.sky.telegrambot.constant;
  */
 public class ChatSettings {
 
-    public static final Long volunteerChatId = 202671625L;
+    public static final Long volunteerChatId = 123L;
 
 }

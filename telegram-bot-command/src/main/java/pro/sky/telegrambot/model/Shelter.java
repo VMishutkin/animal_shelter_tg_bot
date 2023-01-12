@@ -59,6 +59,7 @@ public abstract class Shelter {
                    String homeImprovementsForPuppiesFileName,
                    String homeImprovementsForDisabledFileName,
                    String homeImprovementsForAdultsFileName) {
+
         initializeFileNames(greetingsFileName,
                 descriptionFileName,
                 scheduleAndAddressFileName,
@@ -128,6 +129,10 @@ public abstract class Shelter {
             logger.error("Ошибка URISyntaxException");
         }
         return "Не могу считать информацию";
+    }
+
+    public String getGreetings() {
+        return greetings;
     }
 
     public String getAbout() {

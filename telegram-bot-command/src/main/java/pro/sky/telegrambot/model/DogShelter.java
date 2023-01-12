@@ -8,7 +8,6 @@ public class DogShelter extends Shelter {
 
     private String cynologystsAdvices;
     private String approvedCynologysts;
-
     private String approvedCynologystsFileName = FileNames.APPROVED_CYNOLOGYSTS_DOG_SHELTER;
     private String cynologystsAdvicesFileName = FileNames.CYNOLOGYSTS_ADVICES_DOG_SHELTER;
 
@@ -20,15 +19,41 @@ public class DogShelter extends Shelter {
                 FileNames.TRANSPORTATION_RECOMMENDATIONS_DOG_SHELTER, FileNames.HOME_IMPROVEMENTS_FOR_PUPPIES_DOG_SHELTER,
                 FileNames.HOME_IMPROVEMENTS_FOR_DISABLED_DOG_SHELTER, FileNames.HOME_IMPROVEMENTS_FOR_ADULTS_DOG_SHELTER);
         this.cynologystsAdvices = readStringsFromFile(cynologystsAdvicesFileName);
-        this.approvedCynologystsFileName = readStringsFromFile(cynologystsAdvicesFileName);
+        this.approvedCynologysts = readStringsFromFile(approvedCynologystsFileName);
+    }
 
+    @Override
+    protected void initializeFileNames(String greetingsFileName,
+                                       String descriptionFileName,
+                                       String scheduleAndAddressFileName,
+                                       String documentsForAdoptionFileName,
+                                       String safetyPrecuationsFileName,
+                                       String declineReasonsFileName,
+                                       String meetingRulesFileName,
+                                       String transportationRecommendationsFileName,
+                                       String homeImprovementsForPuppiesFileName,
+                                       String homeImprovementsForDisabledFileName,
+                                       String homeImprovementsForAdultsFileName) {
+        super.initializeFileNames(greetingsFileName,
+                descriptionFileName,
+                scheduleAndAddressFileName,
+                documentsForAdoptionFileName,
+                safetyPrecuationsFileName,
+                declineReasonsFileName,
+                meetingRulesFileName,
+                transportationRecommendationsFileName,
+                homeImprovementsForPuppiesFileName,
+                homeImprovementsForDisabledFileName,
+                homeImprovementsForAdultsFileName);
+        this.cynologystsAdvicesFileName = FileNames.APPROVED_CYNOLOGYSTS_DOG_SHELTER;
+        this.approvedCynologystsFileName = FileNames.CYNOLOGYSTS_ADVICES_DOG_SHELTER;
     }
 
     @Override
     public void updateInfoAboutShelter() {
         super.updateInfoAboutShelter();
-        this.cynologystsAdvices = readStringsFromFile(cynologystsAdvicesFileName);
-        this.approvedCynologystsFileName = readStringsFromFile(cynologystsAdvicesFileName);
+        cynologystsAdvices = readStringsFromFile(cynologystsAdvicesFileName);
+        approvedCynologysts = readStringsFromFile(approvedCynologystsFileName);
     }
 
 

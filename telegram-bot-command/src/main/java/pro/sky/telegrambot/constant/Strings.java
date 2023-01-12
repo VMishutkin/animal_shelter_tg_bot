@@ -7,8 +7,8 @@ public class Strings {
 
     // заготовленные фразы, которые пишет бот. например, приветствие
     public static final String WELCOME_MESSAGE_MENU_MAIN = "Добро пожаловать в наш приют для собак. \nВы можете воспользоваться одним из пунктов главного меню ниже ";
-    public static final String WELCOME_MESSAGE_MENU_ABOUT_SHELTER = "Ещё раз здравствуйте. Вы можете узнать следующую инфу о нашем приюте ";
-    public static final String WELCOME_MESSAGE_MENU_ADOPT_DOG = "Готов предоставить вам следующую полезную инфу ";
+    public static final String WELCOME_MESSAGE_MENU_ABOUT_SHELTER = "Ещё раз здравствуйте. Здесь вы можете узнать о нашем приюте ";
+    public static final String WELCOME_MESSAGE_MENU_ADOPT_DOG = "здесь вы можете получить рекомендации по усыновлению животных и ознакомиться с правилами ";
     public static final String DESCRIBE_ISSUE = "Опишите пожалуйста свою проблему";
     public static final String MESSAGE_FOR_VOLUNTEER = "По братски прошу, свяжитесь с  ";
     public static final String RECORD_CONTACT = "Оставьте пожалуйста свой телефон и как к Вам обращаться";
@@ -45,4 +45,5 @@ public class Strings {
 
     public static final String DOG_SHELTER_GREETINGS = "Добро пожаловать в наш приют для собак. \nВы можете воспользоваться одним из пунктов главного меню ниже ";;
     public static final String CAT_SHELTER_GREETINGS = "Добро пожаловать в наш приют для Кошек. \nВыберите самый замурчательный пункт меню. мяу";;
+    public static final String CHOOSED_WRONG_SHELTER = "Этот пункт доступен только в собачем приюте";
 }
