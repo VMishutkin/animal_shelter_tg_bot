@@ -1,5 +1,6 @@
 package pro.sky.telegrambot.repositoty;
 
+import org.springframework.context.annotation.Scope;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
@@ -13,6 +14,7 @@ import java.util.List;
  * Класс JPA репозитория для сохранения контактов
  */
 @Repository
+@Scope("prototype")
 public interface PersonRepository extends JpaRepository<Person, Long> {
 
     /**

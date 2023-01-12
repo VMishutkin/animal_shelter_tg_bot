@@ -31,8 +31,8 @@ public class ShelterService {
     private final Shelter shelter;
     private final PersonRepository personRepository;
     private final ReportRepository reportRepository;
-    private Logger logger = LoggerFactory.getLogger(ShelterService.class);
-    private TelegramBot telegramBot;
+    private final Logger logger = LoggerFactory.getLogger(ShelterService.class);
+    private final TelegramBot telegramBot;
 
 
     public ShelterService(Shelter shelter, PersonRepository contactRepository, ReportRepository reportRepository, TelegramBot telegramBot) {
