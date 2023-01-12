@@ -44,7 +44,6 @@ public class MenuService {
     public void shelterServiceChooser(Message message) {
         long chatId = message.chat().id();
 
-
         if (userChosenShelter(chatId)) {
             switch (choosedSheltersForUsers.get(chatId)) {
                 case CAT_SHELTER:
@@ -127,6 +126,11 @@ public class MenuService {
             case MenuItemsNames.TO_MAIN_MENU:
                 sendReply(chatId, WELCOME_MESSAGE_MENU_MAIN, keyboards.mainMenuKeyboards);
                 break;
+            case MenuItemsNames.TO_SHELTER_MENU:
+                choosedSheltersForUsers.remove(chatId);
+                sendReply(chatId, SHELTER_MENU_GREETINGS, keyboards.shelterMenu);
+                break;
+
             case MenuItemsNames.TO_INFO_ABOUT_SHELTER:
                 sendReply(chatId, WELCOME_MESSAGE_MENU_ABOUT_SHELTER, keyboards.aboutShelterMenuKeyboards);
                 break;
