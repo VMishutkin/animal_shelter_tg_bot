@@ -59,16 +59,7 @@ public abstract class Shelter {
                    String homeImprovementsForPuppiesFileName,
                    String homeImprovementsForDisabledFileName,
                    String homeImprovementsForAdultsFileName) {
-/*        System.out.println("filenames : " + greetingsFileName + descriptionFileName +
-                scheduleAndAddressFileName+
-                documentsForAdoptionFileName+
-                safetyPrecuationsFileName+
-                declineReasonsFileName +
-                meetingRulesFileName+
-                transportationRecommendationsFileName+
-                homeImprovementsForPuppiesFileName+
-                homeImprovementsForDisabledFileName+
-                homeImprovementsForAdultsFileName);*/
+
         initializeFileNames(greetingsFileName,
                 descriptionFileName,
                 scheduleAndAddressFileName,
