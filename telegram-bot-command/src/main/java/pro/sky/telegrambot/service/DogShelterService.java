@@ -13,7 +13,7 @@ import pro.sky.telegrambot.repository.ReportRepository;
 @Service
 public class DogShelterService extends ShelterService{
 
-    public DogShelterService(Shelter dogShelter, PersonRepository contactRepository, ReportRepository reportRepository, TelegramBot telegramBot) {
+    public DogShelterService(DogShelter dogShelter, PersonRepository contactRepository, ReportRepository reportRepository, TelegramBot telegramBot) {
         super(dogShelter, contactRepository, reportRepository, telegramBot);
     }
 

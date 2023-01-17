@@ -64,7 +64,7 @@ class ShelterServiceTest {
     @Test
     void getScheduleAndAddress() {
         when(shelter.getScheduleAndAddress()).thenReturn(fileContent);
-        assertEquals(shelterService.getScheduleAndAddress(), fileContent);
+        assertEquals(shelterService.getScheduleAndAdress(), fileContent);
         verify(shelter,only()).getScheduleAndAddress();
     }
 
@@ -78,7 +78,7 @@ class ShelterServiceTest {
     @Test
     void getDocumentsForAdoption() {
         when(shelter.getDocumentsForAdoption()).thenReturn(fileContent);
-        assertEquals(shelterService.getDocumentsForAdoption(), fileContent);
+        assertEquals(shelterService.getDocumentsForAdpotion(), fileContent);
         verify(shelter,only()).getDocumentsForAdoption();
     }
 
