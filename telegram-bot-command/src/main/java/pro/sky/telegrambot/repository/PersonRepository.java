@@ -3,6 +3,7 @@ package pro.sky.telegrambot.repository;
 import org.springframework.context.annotation.Scope;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.NoRepositoryBean;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 import pro.sky.telegrambot.entity.Person;
@@ -13,9 +14,8 @@ import java.util.List;
 /**
  * Класс JPA репозитория для сохранения контактов
  */
-@Repository
-@Scope("prototype")
-public interface PersonRepository extends JpaRepository<Person, Long> {
+@NoRepositoryBean
+public interface PersonRepository<T extends Person> extends JpaRepository<T, Long> {
 
     /**
      * метод поиска статуса человека. не используется
@@ -23,8 +23,7 @@ public interface PersonRepository extends JpaRepository<Person, Long> {
      * @param userName
      * @return
      */
-    @Query(value = "SELECT status FROM person WHERE username = :userName", nativeQuery = true)
-    Boolean getPersonStatusFromDataBase(@Param("userName") String userName);
+     Boolean getPersonStatusFromDataBase(@Param("userName") String userName);
 
     /**
      * Метод не используется
@@ -32,7 +31,6 @@ public interface PersonRepository extends JpaRepository<Person, Long> {
      * @param status
      * @return
      */
-    @Query(value = "SELECT * FROM person WHERE status = :status", nativeQuery = true)
     List<Person> getPersonFromDataBase(@Param("status") Boolean status);
 
     /** Метод возвращает лист пользователей из таблицы person.
@@ -41,13 +39,11 @@ public interface PersonRepository extends JpaRepository<Person, Long> {
      * @param endDate
      * @return List<Person>
      */
-    @Query(value = "SELECT * FROM person WHERE end_date = :endDate", nativeQuery = true)
     List<Person> getUsernameEndDate(@Param("endDate") LocalDate endDate);
 
     /**
      * Запрос людей, которые сегодня прошли испытательный срок для поздравления
      * @return Список людей у которых сегодня прошел испытательный срок
      */
-    @Query(value = "select * from person where end_date = current_date", nativeQuery = true)
-    List<Person> getUsernameCompleted();
+     List<Person> getUsernameCompleted();
 }

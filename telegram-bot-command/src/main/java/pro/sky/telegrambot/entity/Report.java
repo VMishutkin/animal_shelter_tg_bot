@@ -6,7 +6,7 @@ import java.time.LocalDate;
  * Класс для сохранения отчетов в БД
  */
 @Entity
-@Table(name = "report")
+@Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
 public class Report {
     /**
      * Первичный ключ записи в БД

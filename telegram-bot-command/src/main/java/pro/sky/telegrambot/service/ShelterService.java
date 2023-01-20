@@ -29,7 +29,7 @@ import static pro.sky.telegrambot.constant.Strings.*;
 
 public class ShelterService {
     private final Shelter shelter;
-    private final PersonRepository personRepository;
+    private final PersonRepository<Person> personRepository;
     private final ReportRepository reportRepository;
     private final Logger logger = LoggerFactory.getLogger(ShelterService.class);
     private final TelegramBot telegramBot;

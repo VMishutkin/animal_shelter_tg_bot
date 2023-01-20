@@ -13,13 +13,13 @@ import java.util.List;
  * Сервис для работы с сущностью Person
  */
 @Service
-public class PersonService {
+public abstract class PersonService {
 
-    private final PersonRepository personRepository;
+    private final PersonRepository<Person> personRepository;
     private final Logger logger = LoggerFactory.getLogger(PersonService.class);
 
     public PersonService(PersonRepository personRepository) {
-        this.personRepository = personRepository;
+    this.personRepository = personRepository;
     }
 
 

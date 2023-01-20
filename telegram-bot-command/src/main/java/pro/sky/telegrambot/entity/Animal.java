@@ -5,9 +5,8 @@ import com.fasterxml.jackson.annotation.JsonBackReference;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "animal")
+@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
 public class Animal {
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
