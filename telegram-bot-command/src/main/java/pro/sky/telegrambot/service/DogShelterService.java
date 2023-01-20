@@ -11,11 +11,11 @@ import pro.sky.telegrambot.repository.ReportRepository;
  */
 
 @Service
-public class DogShelterService extends ShelterService{
+public class DogShelterService extends ShelterService {
 
-    public DogShelterService(DogShelter dogShelter, DogShelterPersonRepository contactRepository, ReportRepository reportRepository, TelegramBot telegramBot) {
+    public DogShelterService(DogShelter dogShelter, DogShelterPersonService personService, ReportService reportService, TelegramBot telegramBot) {
 
-        super(dogShelter, contactRepository, personService, reportRepository, telegramBot);
+        super(dogShelter, personService, reportService, telegramBot);
     }
 
     public String getApprovedCynologysts() {

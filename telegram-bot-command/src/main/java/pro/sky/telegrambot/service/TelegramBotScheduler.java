@@ -1,3 +1,4 @@
+/*
 package pro.sky.telegrambot.service;
 
 import com.pengrad.telegrambot.TelegramBot;
@@ -18,9 +19,11 @@ import java.util.List;
 import static pro.sky.telegrambot.constant.Strings.*;
 import static pro.sky.telegrambot.constant.ChatSettings.*;
 
+*/
 /**
  * Класс для ежедневной проверки отчетов
- */
+ *//*
+
 @Service
 public class TelegramBotScheduler {
 
@@ -35,10 +38,12 @@ public class TelegramBotScheduler {
     }
 
 
-    /** Основной метод.Запускается раз в сутки в 09.00.
+    */
+/** Основной метод.Запускается раз в сутки в 09.00.
      * Формирует поочередно собщения для прошедших испытание, не прошедших и тем кому продлили срок испытания.
      * Также посылает волонтерам список лиц, у которых истекает испытательный срок сегодня.
-     */
+     *//*
+
     @Scheduled(cron = "0 0 9 ? * *")
     public void run() {
         logger.info("Processing scheduled");
@@ -48,10 +53,12 @@ public class TelegramBotScheduler {
 
 
 
-    /** Отправка сообщения в чат волонтёров со списком усыновителей (только username), у которых заканчивается срок испытания,
+    */
+/** Отправка сообщения в чат волонтёров со списком усыновителей (только username), у которых заканчивается срок испытания,
      * для дольнейшего принятия решения волонтером.
      * @param personList List<Person>
-     */
+     *//*
+
     private void sendingMessagesVolunteer(List<Person> personList) {
         if (!(personList == null)) {
             StringBuilder listUsername = new StringBuilder();
@@ -65,10 +72,12 @@ public class TelegramBotScheduler {
         }
     }
 
-    /** Отправка сообщений всем усыновителям (прошедших, не прошедших испытание), при наличии таковых.
+    */
+/** Отправка сообщений всем усыновителям (прошедших, не прошедших испытание), при наличии таковых.
      * @param personList List<Person>
      * @param messageText String
-     */
+     *//*
+
     private void sendingMessagesPerson(List<Person> personList, String messageText) {
         if (!(personList == null)){
             for (Person person: personList){
@@ -78,26 +87,32 @@ public class TelegramBotScheduler {
         }
     }
 
-    /** Получение списка, прошедших испытание.
+    */
+/** Получение списка, прошедших испытание.
      * @return List<Person>
-     */
+     *//*
+
     private List<Person> getListUserComplete() {
         return personRepository.getUsernameCompleted();
     }
 
-    /** Возвращает записи из тиблицы person с параметром поля endDate сегодня.
+    */
+/** Возвращает записи из тиблицы person с параметром поля endDate сегодня.
      * Возвращаемые сущности Person.
      * @return List<Person>
-     */
+     *//*
+
     private List<Person> getUsernameEndDateNow() {
         LocalDate localDate = LocalDate.now();
         return personRepository.getUsernameEndDate(localDate);
     }
 
-    /** Возвращает все записи из тиблицы person с параметром поля endDate вчера.
+    */
+/** Возвращает все записи из тиблицы person с параметром поля endDate вчера.
      * Возвращаемые сущности Person.
      * @return List<Person>
-     */
+     *//*
+
     private List<Person> getUsernameEndDateYesterday() {
         Calendar calendar = Calendar.getInstance();
         calendar.add(Calendar.DATE, -1);
@@ -105,4 +120,4 @@ public class TelegramBotScheduler {
         return personRepository.getUsernameEndDate(localDate);
     }
 
-}
+}*/

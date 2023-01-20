@@ -14,21 +14,20 @@ import java.util.List;
 /**
  * Сервис для работы с сущностью Person
  */
-@Service
-public abstract class PersonService {
 
-    @Autowired
-    @Qualifier
-    private final PersonRepository<Person> personRepository;
+public  class PersonService {
+
+    private final PersonRepository personRepository;
     private final Logger logger = LoggerFactory.getLogger(PersonService.class);
 
-    protected PersonService(PersonRepository<Person> personRepository) {
+    protected PersonService(PersonRepository personRepository) {
         this.personRepository = personRepository;
     }
 
 
     /**
      * Возвращает список Person
+     *
      * @return
      */
     public List<Person> getAllPersons() {
@@ -37,37 +36,46 @@ public abstract class PersonService {
 
     /**
      * Возвращает Person по id
+     *
      * @param id
      * @return
      */
     public Person getPerson(Long id) {
-        return  personRepository.getById(id);
+
+        return (Person) personRepository.findById(id).orElseThrow();
     }
 
     /**
      * Создаёт новую запись Person в БД
+     *
      * @param person
      * @return
      */
-    public Person savePerson(Person person) {
-        return personRepository.save(person);
+    public void savePerson(Person person) {
+        personRepository.save(person);
     }
 
     /**
      * Редактирует запись Person в БД
+     *
      * @param person
      * @return
      */
-    public Person editPerson(Person person) {
-        return personRepository.save(person);
+    public void editPerson(Person person) {
+        personRepository.save(person);
     }
 
     /**
      * Удаляет запись из БД по id
+     *
      * @param id
      */
     public void deletePerson(Long id) {
-        personRepository.findById(id).orElseThrow(EntityNotFoundException::new);
+        try {
+            personRepository.findById(id).orElseThrow(EntityNotFoundException::new);
+        } catch (Throwable e) {
+            throw new RuntimeException(e);
+        }
         logger.error("There is not animal with id = " + id);
         personRepository.deleteById(id);
     }

@@ -34,7 +34,7 @@ public class ShelterService {
     private final TelegramBot telegramBot;
 
 
-    public ShelterService(Shelter shelter, PersonService personService, ReportRepository reportRepository, ReportService reportService, TelegramBot telegramBot) {
+    public ShelterService(Shelter shelter, PersonService personService, ReportService reportService, TelegramBot telegramBot) {
         this.shelter = shelter;
         this.personService = personService;
         this.reportService = reportService;
@@ -50,6 +50,8 @@ public class ShelterService {
     public void saveContact(Person person) {
         personService.savePerson(person);
     }
+
+
 
     public void getReport(Message message) {
         Report report = new Report();

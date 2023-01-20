@@ -7,8 +7,7 @@ import java.util.Objects;
 /**
  *Класс для сохранения контактов в БД.
  * */
-@Entity
-@Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
+@MappedSuperclass
 public class Person {
 
     /**

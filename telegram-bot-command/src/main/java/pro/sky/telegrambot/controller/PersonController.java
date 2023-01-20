@@ -1,3 +1,4 @@
+/*
 package pro.sky.telegrambot.controller;
 
 import io.swagger.v3.oas.annotations.Operation;
@@ -122,3 +123,4 @@ public class PersonController {
     }
 
 }
+*/

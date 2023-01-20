@@ -1,17 +1,20 @@
 package pro.sky.telegrambot.repository;
 
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
+import org.springframework.stereotype.Repository;
 import pro.sky.telegrambot.entity.CatShelterPerson;
+import pro.sky.telegrambot.entity.DogShelterPerson;
 
 import javax.transaction.Transactional;
 import java.time.LocalDate;
 import java.util.List;
 
+
 @Transactional
-@Qualifier("catShelter")
-public interface CatShelterPersonRepository extends PersonRepository<CatShelterPerson> {
+public interface CatShelterPersonRepository  extends PersonRepository<CatShelterPerson> {
 
     /**
      * метод поиска статуса человека. не используется

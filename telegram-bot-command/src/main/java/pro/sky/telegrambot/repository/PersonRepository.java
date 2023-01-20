@@ -16,7 +16,6 @@ import java.util.List;
  * Класс JPA репозитория для сохранения контактов
  */
 @NoRepositoryBean
-@Qualifier("primary")
 public interface PersonRepository<T extends Person> extends JpaRepository<T, Long> {
 
     /**
@@ -25,27 +24,35 @@ public interface PersonRepository<T extends Person> extends JpaRepository<T, Lon
      * @param userName
      * @return
      */
-     Boolean getPersonStatusFromDataBase(@Param("userName") String userName);
+    @Query(value = "SELECT status FROM * WHERE username = :userName", nativeQuery = true)
+    Boolean getPersonStatusFromDataBase(@Param("userName") String userName);
 
     /**
      * Метод не используется
-     * @deprecated
+     *
      * @param status
      * @return
-     */
-    List<Person> getPersonFromDataBase(@Param("status") Boolean status);
-
-    /** Метод возвращает лист пользователей из таблицы person.
-     * В качестве параметра передается дата. Возвращаемые сущности Person.
      * @deprecated
+     */
+    @Query(value = "SELECT * FROM Person WHERE status = :status", nativeQuery = true)
+    List<pro.sky.telegrambot.entity.Person> getPersonFromDataBase(@Param("status") Boolean status);
+
+    /**
+     * Метод возвращает лист пользователей из таблицы person.
+     * В качестве параметра передается дата. Возвращаемые сущности Person.
+     *
      * @param endDate
      * @return List<Person>
+     * @deprecated
      */
-    List<Person> getUsernameEndDate(@Param("endDate") LocalDate endDate);
+    @Query(value = "SELECT * FROM Person WHERE end_date = :endDate", nativeQuery = true)
+    List<pro.sky.telegrambot.entity.Person> getUsernameEndDate(@Param("endDate") LocalDate endDate);
 
     /**
      * Запрос людей, которые сегодня прошли испытательный срок для поздравления
+     *
      * @return Список людей у которых сегодня прошел испытательный срок
      */
-     List<Person> getUsernameCompleted();
+    @Query(value = "select * from Person where end_date = current_date", nativeQuery = true)
+    List<pro.sky.telegrambot.entity.Person> getUsernameCompleted();
 }

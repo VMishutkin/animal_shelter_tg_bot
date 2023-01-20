@@ -17,7 +17,7 @@ public class Animal {
     @ManyToOne
     @JoinColumn(name = "person_id")
     @JsonBackReference
-    private Person person;
+    private CatShelterPerson person;
 
     public Long getId() {
         return id;
@@ -63,7 +63,7 @@ public class Animal {
         return person;
     }
 
-    public void setPerson(Person person) {
+    public void setPerson(CatShelterPerson person) {
         this.person = person;
     }
 
