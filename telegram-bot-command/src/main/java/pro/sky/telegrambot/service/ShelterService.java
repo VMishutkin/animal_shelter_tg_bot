@@ -12,8 +12,7 @@ import org.slf4j.LoggerFactory;
 import pro.sky.telegrambot.entity.Person;
 import pro.sky.telegrambot.entity.Report;
 import pro.sky.telegrambot.exception.TelegramBotExceptionAPI;
-import pro.sky.telegrambot.model.Shelter;
-import pro.sky.telegrambot.repository.PersonRepository;
+import pro.sky.telegrambot.entity.Shelter;
 import pro.sky.telegrambot.repository.ReportRepository;
 
 import java.io.IOException;
@@ -29,16 +28,16 @@ import static pro.sky.telegrambot.constant.Strings.*;
 
 public class ShelterService {
     private final Shelter shelter;
-    private final PersonRepository<Person> personRepository;
-    private final ReportRepository reportRepository;
+    private final PersonService personService;
+    private final ReportService reportService;
     private final Logger logger = LoggerFactory.getLogger(ShelterService.class);
     private final TelegramBot telegramBot;
 
 
-    public ShelterService(Shelter shelter, PersonRepository contactRepository, ReportRepository reportRepository, TelegramBot telegramBot) {
+    public ShelterService(Shelter shelter, PersonService personService, ReportRepository reportRepository, ReportService reportService, TelegramBot telegramBot) {
         this.shelter = shelter;
-        this.personRepository = contactRepository;
-        this.reportRepository = reportRepository;
+        this.personService = personService;
+        this.reportService = reportService;
         this.telegramBot = telegramBot;
     }
 
@@ -49,7 +48,7 @@ public class ShelterService {
     }
 
     public void saveContact(Person person) {
-        personRepository.save(person);
+        personService.savePerson(person);
     }
 
     public void getReport(Message message) {
@@ -64,7 +63,7 @@ public class ShelterService {
             byte[] image = telegramBot.getFileContent(getFileResponse.file());
 
             report.setPhoto(image);
-            reportRepository.save(report);
+            reportService.saveReport(report);
         } catch (IOException e) {
             logger.error("Ошибка чтения или записи отчёта");
         } finally {
@@ -84,7 +83,7 @@ public class ShelterService {
             }
             SendMessage reply = new SendMessage(message.chat().id(), text);
             telegramBot.execute(reply);
-            SendPhoto sendPhoto = new SendPhoto(message.chat().id(), reportRepository.findById(1L).get().getPhoto());
+            SendPhoto sendPhoto = new SendPhoto(message.chat().id(), reportService.getReport(1l).getPhoto());
             telegramBot.execute(sendPhoto);
         }
     }
@@ -155,7 +154,7 @@ public class ShelterService {
 
     public void deleteContact(String message) {
         try {
-            personRepository.deleteById(Long.valueOf(message));
+            personService.deletePerson(Long.valueOf(message));
         } catch (RuntimeException e) {
             logger.error("Ошибка. Удаление не возможно, запись не найдена");
         }
@@ -164,12 +163,12 @@ public class ShelterService {
 
     public void appointGuardian(String id) {
         try {
-            Person guardian = personRepository.findById(Long.valueOf(id)).get();
+            Person guardian = personService.getPerson(Long.valueOf(id));
             guardian.setAdoptive(true);
             guardian.setStartProbationDate(LocalDate.now());
             LocalDate endDate = LocalDate.now().plusDays(30);
             guardian.setEndProbationDate(endDate);
-            personRepository.save(guardian);
+            personService.savePerson(guardian);
         }catch (TelegramBotExceptionAPI e){
             logger.error("Ошибка. Изменение сущности не возможно");
         }
@@ -218,10 +217,11 @@ public class ShelterService {
             Long id = Long.valueOf(idString);
             String daysAdd = message.substring(message.indexOf(" ") + 1);
             int days = Integer.parseInt(daysAdd);
-            Person guardian = personRepository.getById(id);
+
+            Person guardian = personService.getPerson(Long.valueOf(id));
             LocalDate endDate = guardian.getEndProbationDate();
             guardian.setEndProbationDate(endDate.plusDays(days));
-            personRepository.save(guardian);
+            personService.savePerson(guardian);
             notificationExtendProbation(guardian.getChatId(), days);
         }catch (TelegramBotExceptionAPI e){
             logger.error("Ошибка. Изменение не сохранено");
@@ -235,7 +235,8 @@ public class ShelterService {
 
 
     public String printContactsList() {
-        return personRepository.findAll().stream().map(Objects::toString).collect(Collectors.joining("\n"));
+        return personService.getAllPersons().stream().map(Objects::toString).collect(Collectors.joining("\n"));
+ //       return personRepository.findAll().stream().map(Objects::toString).collect(Collectors.joining("\n"));
     }
 
 

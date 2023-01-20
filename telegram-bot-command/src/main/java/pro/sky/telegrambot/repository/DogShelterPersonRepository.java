@@ -1,5 +1,6 @@
 package pro.sky.telegrambot.repository;
 
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.data.repository.query.Param;
 import pro.sky.telegrambot.entity.DogShelterPerson;
 
@@ -8,6 +9,7 @@ import java.time.LocalDate;
 import java.util.List;
 
 @Transactional
+@Qualifier("dogShelter")
 public interface DogShelterPersonRepository extends PersonRepository<DogShelterPerson> {
 
     /**

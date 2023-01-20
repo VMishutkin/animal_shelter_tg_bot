@@ -1,7 +1,9 @@
 package pro.sky.telegrambot.constant;
 
+import pro.sky.telegrambot.entity.Shelter;
+
 /**
- * адреса и названия файлов из которых берутся данные для {@link pro.sky.telegrambot.model.Shelter}
+ * адреса и названия файлов из которых берутся данные для {@link Shelter}
  */
 public class FileNames {
     public static final String DECLINE_REASONS_DOG_SHELTER = "/dogShelterFiles/declineReasons.txt";

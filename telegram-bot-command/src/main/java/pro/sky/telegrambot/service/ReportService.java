@@ -38,5 +38,12 @@ public class ReportService {
         return  reportRepository.findByDateReport(localDate);
     }
 
+    public Report saveReport(Report report){
+        return reportRepository.save(report);
+    }
+    public Report getReport(long id){
+        return reportRepository.findById(id).orElseThrow();
+    }
+
 
 }

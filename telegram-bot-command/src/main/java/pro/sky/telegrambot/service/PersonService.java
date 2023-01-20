@@ -2,6 +2,8 @@ package pro.sky.telegrambot.service;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 import pro.sky.telegrambot.entity.Person;
 import pro.sky.telegrambot.repository.PersonRepository;
@@ -15,11 +17,13 @@ import java.util.List;
 @Service
 public abstract class PersonService {
 
+    @Autowired
+    @Qualifier
     private final PersonRepository<Person> personRepository;
     private final Logger logger = LoggerFactory.getLogger(PersonService.class);
 
-    public PersonService(PersonRepository personRepository) {
-    this.personRepository = personRepository;
+    protected PersonService(PersonRepository<Person> personRepository) {
+        this.personRepository = personRepository;
     }
 
 
@@ -45,7 +49,7 @@ public abstract class PersonService {
      * @param person
      * @return
      */
-    public Person createPerson(Person person) {
+    public Person savePerson(Person person) {
         return personRepository.save(person);
     }
 
