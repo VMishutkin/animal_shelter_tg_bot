@@ -54,39 +54,40 @@ public class ShelterService {
     }
 
     public void getReport(Message message) {
-        Report report = new Report();
-        report.setUsername(message.chat().username());
-        report.setMessage(message.caption());
-        report.setDateReport(LocalDate.now());
-        PhotoSize photoSize = message.photo()[1];
-        GetFile getFile = new GetFile(photoSize.fileId());
-        GetFileResponse getFileResponse = telegramBot.execute(getFile);
-        try {
-            byte[] image = telegramBot.getFileContent(getFileResponse.file());
-
-            report.setPhoto(image);
-            reportRepository.save(report);
-        } catch (IOException e) {
-            logger.error("Ошибка чтения или записи отчёта");
-        } finally {
-            String text = "Отчёт не сохранён, попытайтесь его отправить заново";
-            if (!(report.getMessage() == null) && !(report.getPhoto() == null)) {
-                text = "Благодарим за ваш отчёт";
-            }
-            if (report.getMessage() == null) {
-                text = WARNING_MESSAGE + " Текст где?";
-                SendMessage reply = new SendMessage(volunteerChatId, "Усыновитель @" + message.chat().username() + " не прислал текст");
+        if (!(message.photo() == null)) {
+            Report report = new Report();
+            report.setUsername(message.chat().username());
+            report.setMessage(message.caption());
+            report.setDateReport(LocalDate.now());
+            PhotoSize photoSize = message.photo()[1];
+            GetFile getFile = new GetFile(photoSize.fileId());
+            GetFileResponse getFileResponse = telegramBot.execute(getFile);
+            try {
+                byte[] image = telegramBot.getFileContent(getFileResponse.file());
+                report.setPhoto(image);
+                reportRepository.save(report);
+            } catch (IOException e) {
+                logger.error("Ошибка чтения или записи отчёта");
+            } finally {
+                String text = "Отчёт не сохранён, попытайтесь его отправить заново";
+                if (!(report.getMessage() == null) && !(report.getPhoto() == null)) {
+                    text = "Благодарим за ваш отчёт";
+                }
+                if (report.getMessage() == null) {
+                    text = WARNING_MESSAGE + " Текст где?";
+                    SendMessage reply = new SendMessage(volunteerChatId, "Усыновитель @" + message.chat().username() + " не прислал текст");
+                    telegramBot.execute(reply);
+                }
+                if (report.getPhoto() == null) {
+                    text = WARNING_MESSAGE + " Фото где?";
+                    SendMessage reply = new SendMessage(volunteerChatId, "Усыновитель @" + message.chat().username() + " не прислал фото");
+                    telegramBot.execute(reply);
+                }
+                SendMessage reply = new SendMessage(message.chat().id(), text);
                 telegramBot.execute(reply);
+                SendPhoto sendPhoto = new SendPhoto(message.chat().id(), reportRepository.findById(1L).get().getPhoto());
+                telegramBot.execute(sendPhoto);
             }
-            if (report.getPhoto() == null) {
-                text = WARNING_MESSAGE + " Фото где?";
-                SendMessage reply = new SendMessage(volunteerChatId, "Усыновитель @" + message.chat().username() + " не прислал фото");
-                telegramBot.execute(reply);
-            }
-            SendMessage reply = new SendMessage(message.chat().id(), text);
-            telegramBot.execute(reply);
-            SendPhoto sendPhoto = new SendPhoto(message.chat().id(), reportRepository.findById(1L).get().getPhoto());
-            telegramBot.execute(sendPhoto);
         }
     }
 

@@ -1,17 +1,6 @@
-CREATE TABLE animal
-(
-    id              BIGINT PRIMARY KEY,
-    name            TEXT,
-    kind_of_animal  TEXT,
-    age             BIGINT,
-    invalid         BOOLEAN,
-    person_id       BIGINT REFERENCES person(id)
-);
-
-
 CREATE TABLE person
 (
-    id           BIGINT PRIMARY KEY,
+    id           BIGSERIAL PRIMARY KEY,
     username     TEXT,
     phone_number TEXT,
     contact_name TEXT,
@@ -22,9 +11,20 @@ CREATE TABLE person
 );
 
 
+CREATE TABLE animal
+(
+    id              BIGSERIAL PRIMARY KEY,
+    name            TEXT,
+    kind_of_animal  TEXT,
+    age             BIGINT,
+    invalid         BOOLEAN,
+    person_id       BIGINT REFERENCES person(id)
+);
+
+
 CREATE TABLE volunteer
 (
-    id           BIGINT PRIMARY KEY,
+    id           BIGSERIAL PRIMARY KEY,
     username     TEXT,
     phone_number TEXT,
     contact_name TEXT
@@ -32,7 +32,7 @@ CREATE TABLE volunteer
 
 
 CREATE TABLE report(
-    id              BIGINT PRIMARY KEY,
+    id              BIGSERIAL PRIMARY KEY,
     username        TEXT,
     message         TEXT,
     photo           OID,
