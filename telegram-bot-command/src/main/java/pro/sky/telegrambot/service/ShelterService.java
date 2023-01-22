@@ -9,6 +9,7 @@ import com.pengrad.telegrambot.request.SendPhoto;
 import com.pengrad.telegrambot.response.GetFileResponse;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import pro.sky.telegrambot.constant.ChatSettings;
 import pro.sky.telegrambot.entity.Person;
 import pro.sky.telegrambot.entity.Report;
 import pro.sky.telegrambot.exception.TelegramBotExceptionAPI;
@@ -92,7 +93,7 @@ public class ShelterService {
     public void getRequest(Message inputMessage) {
         String nickName = inputMessage.from().username();
         String requestText = inputMessage.text();
-        SendMessage messageVolunteer = new SendMessage(inputMessage.chat().id(), MESSAGE_FOR_VOLUNTEER + "\n " + "@" + nickName + "\n" + requestText);
+        SendMessage messageVolunteer = new SendMessage(volunteerChatId, MESSAGE_FOR_VOLUNTEER + "\n " + "@" + nickName + "\n" + requestText);
         telegramBot.execute(messageVolunteer);
         SendMessage replyMessage = new SendMessage(inputMessage.chat().id(), THANKS_FOR_REQUEST);
         telegramBot.execute(replyMessage);

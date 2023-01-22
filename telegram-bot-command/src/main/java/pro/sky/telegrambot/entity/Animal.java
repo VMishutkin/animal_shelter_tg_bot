@@ -15,10 +15,8 @@ public class Animal {
     private String kindOfAnimal;
     private Long age;
     private Boolean invalid;
-    @ManyToOne
     @JoinColumn(name = "person_id")
-    @JsonBackReference
-    private Person person;
+    private Long personId;
 
     public Long getId() {
         return id;
@@ -60,12 +58,12 @@ public class Animal {
         this.invalid = invalid;
     }
 
-    public Person getPerson() {
-        return person;
+    public Long getPersonId() {
+        return personId;
     }
 
-    public void setPerson(Person person) {
-        this.person = person;
+    public void setPersonId(Long personId) {
+        this.personId = personId;
     }
 
 }

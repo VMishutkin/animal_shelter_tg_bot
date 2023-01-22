@@ -1,37 +1,38 @@
 CREATE TABLE animal
 (
-    id              INTEGER PRIMARY KEY,
+    id              BIGINT PRIMARY KEY,
     name            TEXT,
     kind_of_animal  TEXT,
-    age             INTEGER,
+    age             BIGINT,
     invalid         BOOLEAN,
-    person_id       INTEGER REFERENCES person(id)
+    person_id       BIGINT REFERENCES person(id)
 );
 
 
 CREATE TABLE person
 (
-    id           INTEGER PRIMARY KEY,
+    id           BIGINT PRIMARY KEY,
     username     TEXT,
-    number_phone TEXT,
+    phone_number TEXT,
     contact_name TEXT,
-    status       BOOLEAN,
-    start_date   DATE,
-    end_date     DATE
+    chat_id      BIGINT,
+    is_adoptive  BOOLEAN,
+    start_probation_date  DATE,
+    end_probation_date   DATE
 );
 
 
 CREATE TABLE volunteer
 (
-    id           INTEGER PRIMARY KEY,
+    id           BIGINT PRIMARY KEY,
     username     TEXT,
-    number_phone TEXT,
+    phone_number TEXT,
     contact_name TEXT
 );
 
 
 CREATE TABLE report(
-    id              SERIAL PRIMARY KEY,
+    id              BIGINT PRIMARY KEY,
     username        TEXT,
     message         TEXT,
     photo           OID,
