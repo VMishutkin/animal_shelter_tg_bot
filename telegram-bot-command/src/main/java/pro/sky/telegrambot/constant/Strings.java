@@ -28,6 +28,7 @@ public class Strings {
 
     public static final String ADD_CONTACT = "Чтобы добавить контакт введите через пробел номер телефона, имя и фамилию и @имя пользователя в Телеграмме,.\n" +
             "Например: 898745212350 Иван Иванов @CrazyPuck";
+    public static final String CHOOSE_FAILER = "Введите Id провалившего испытание";
     public static final String REPORTS_MENU = "Чтобы посмотреть отчёты усыновителя введите его ID.\n" +
             "Вы модете посмотреть ID в списке усыновителей.\n" + "Например: 156";
     public static final String MAIN_MENU = "Выберите пункт меню";
@@ -46,4 +47,6 @@ public class Strings {
     public static final String DOG_SHELTER_GREETINGS = "Добро пожаловать в наш приют для собак. \nВы можете воспользоваться одним из пунктов главного меню ниже ";;
     public static final String CAT_SHELTER_GREETINGS = "Добро пожаловать в наш приют для Кошек. \nВыберите самый замурчательный пункт меню. мяу";;
     public static final String CHOOSED_WRONG_SHELTER = "Этот пункт доступен только в собачем приюте";
+    public static final String GET_REPORTS_BY_DAY = "Введите дату, за которую хотите посмотреть отчеты";
+    public static final String GET_REPORTS_BY_USER = "Введите имя пользователя, чтобы посмотреть его отчеты";
 }

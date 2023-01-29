@@ -24,7 +24,7 @@ public interface PersonRepository<T extends Person> extends JpaRepository<T, Lon
      * @param userName
      * @return
      */
-    @Query(value = "SELECT status FROM * WHERE username = :userName", nativeQuery = true)
+
     Boolean getPersonStatusFromDataBase(@Param("userName") String userName);
 
     /**
@@ -34,7 +34,7 @@ public interface PersonRepository<T extends Person> extends JpaRepository<T, Lon
      * @return
      * @deprecated
      */
-    @Query(value = "SELECT * FROM Person WHERE status = :status", nativeQuery = true)
+
     List<pro.sky.telegrambot.entity.Person> getPersonFromDataBase(@Param("status") Boolean status);
 
     /**
@@ -45,7 +45,6 @@ public interface PersonRepository<T extends Person> extends JpaRepository<T, Lon
      * @return List<Person>
      * @deprecated
      */
-    @Query(value = "SELECT * FROM Person WHERE end_date = :endDate", nativeQuery = true)
     List<pro.sky.telegrambot.entity.Person> getUsernameEndDate(@Param("endDate") LocalDate endDate);
 
     /**
@@ -53,6 +52,5 @@ public interface PersonRepository<T extends Person> extends JpaRepository<T, Lon
      *
      * @return Список людей у которых сегодня прошел испытательный срок
      */
-    @Query(value = "select * from Person where end_date = current_date", nativeQuery = true)
     List<pro.sky.telegrambot.entity.Person> getUsernameCompleted();
 }

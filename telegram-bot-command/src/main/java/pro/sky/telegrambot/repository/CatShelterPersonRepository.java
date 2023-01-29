@@ -22,7 +22,7 @@ public interface CatShelterPersonRepository  extends PersonRepository<CatShelter
      * @param userName
      * @return
      */
-    @Query(value = "SELECT status FROM * WHERE username = :userName", nativeQuery = true)
+    @Query(value = "SELECT status FROM cat_shelter_person WHERE username = :userName", nativeQuery = true)
     Boolean getPersonStatusFromDataBase(@Param("userName") String userName);
 
     /**
@@ -32,7 +32,7 @@ public interface CatShelterPersonRepository  extends PersonRepository<CatShelter
      * @return
      * @deprecated
      */
-    @Query(value = "SELECT * FROM person WHERE status = :status", nativeQuery = true)
+    @Query(value = "SELECT * FROM cat_shelter_person WHERE status = :status", nativeQuery = true)
     List<pro.sky.telegrambot.entity.Person> getPersonFromDataBase(@Param("status") Boolean status);
 
     /**
@@ -43,7 +43,7 @@ public interface CatShelterPersonRepository  extends PersonRepository<CatShelter
      * @return List<Person>
      * @deprecated
      */
-    @Query(value = "SELECT * FROM person WHERE end_date = :endDate", nativeQuery = true)
+    @Query(value = "SELECT * FROM cat_shelter_person WHERE end_date = :endDate", nativeQuery = true)
     List<pro.sky.telegrambot.entity.Person> getUsernameEndDate(@Param("endDate") LocalDate endDate);
 
     /**
@@ -51,6 +51,6 @@ public interface CatShelterPersonRepository  extends PersonRepository<CatShelter
      *
      * @return Список людей у которых сегодня прошел испытательный срок
      */
-    @Query(value = "select * from person where end_date = current_date", nativeQuery = true)
+    @Query(value = "select * from cat_shelter_person where end_date = current_date", nativeQuery = true)
     List<pro.sky.telegrambot.entity.Person> getUsernameCompleted();
 }

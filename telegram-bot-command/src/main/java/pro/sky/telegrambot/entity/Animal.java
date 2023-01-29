@@ -4,9 +4,10 @@ import com.fasterxml.jackson.annotation.JsonBackReference;
 
 import javax.persistence.*;
 
-@Entity
+@Entity(name="animal")
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
-public class Animal {
+@DiscriminatorColumn(name="animal_type")
+public abstract class Animal {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;

@@ -12,7 +12,13 @@ public class AdminMenuItems {
     public static final String TO_CONTACTS_MENU = "Контакты";
     public static final String TO_REPORTS_MENU = "Отчеты";
     public static final String PRINT_CONTACTS_LIST = "Вывести контакты";
-    public static final String TO_FILES_MENU = "Файлы";
+    //   public static final String TO_FILES_MENU = "Файлы";
     public static final String WATCH_DEBTORS = "Вывести должников";
 
+    public static final String TO_SHELTER_MENU = "Выбрать приют";
+    public static final String DOG_SHELTER_CHOOSE = "Собачий приют";
+    public static final String CAT_SHELTER_CHOOSE = "Кошачий приют";
+    public static final String PROBATION_FAIL = "Испытание провалено";
+    public static final String REPORTS_BY_DAY = "Отчеты за день";
+    public static final String REPORTS_BY_USER = "Отчеты пользователя";
 }

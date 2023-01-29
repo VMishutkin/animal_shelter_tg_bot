@@ -8,7 +8,7 @@ import java.util.Objects;
  *Класс для сохранения контактов в БД.
  * */
 @MappedSuperclass
-public class Person {
+public abstract class Person {
 
     /**
      * Первичный ключ для записи в БД

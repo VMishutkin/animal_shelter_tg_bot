@@ -26,8 +26,10 @@ public class ReportService {
      * @param username
      * @return List<Report>
      */
-    public List<Report> getAllReportsPerson(String username) {
-        return reportRepository.findByUsernameIgnoreCase(username);
+    public List<Report> getAllReportsByPerson(String username) {
+       // return reportRepository.findReportsByUser();
+       // return reportRepository.findReportByUsername("Vladfame0_0");
+    return     reportRepository.getReportsByUser();
     }
 
     /**

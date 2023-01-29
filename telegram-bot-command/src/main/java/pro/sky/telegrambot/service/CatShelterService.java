@@ -13,7 +13,5 @@ public class CatShelterService extends ShelterService{
         super(catShelter, personService, reportService, telegramBot);
     }
 
-    @Override
-    public void saveContact(Person person) {
-    }
+
 }

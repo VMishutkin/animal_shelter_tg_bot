@@ -24,8 +24,8 @@ public class MenuService {
     private final ReplyKeyboards keyboards;
     private final TelegramBot telegramBot;
 
-    private final ShelterService dogShelterService;
-    private final ShelterService catShelterService;
+    private final DogShelterService dogShelterService;
+    private final CatShelterService catShelterService;
     private final Map<Long, Responses> pendingResponses;
     private final Map<Long, AdminResponses> adminPendingResponses;
 
@@ -81,13 +81,13 @@ public class MenuService {
         Long chatId = message.chat().id();
         switch (pendingResponses.get(chatId)) {
             case REPORT:
-                shelterService.getReport(message);
+                shelterService.getReport(message, choosedSheltersForUsers.get(chatId));
                 break;
             case REQUEST:
                 shelterService.getRequest(message);
                 break;
             case CONTACT:
-                shelterService.getContactFromChat(message);
+                shelterService.getContactFromChat(message, choosedSheltersForUsers.get(chatId));
                 break;
         }
         pendingResponses.remove(chatId);
@@ -96,10 +96,18 @@ public class MenuService {
     private void chooseShelter(long chatId, String messageText) {
         if (messageText.equals(MenuItemsNames.DOG_SHELTER_CHOOSE)) {
             choosedSheltersForUsers.put(chatId, ShelterType.DOG_SHELTER);
-            sendReply(chatId, Strings.DOG_SHELTER_GREETINGS, keyboards.mainMenuKeyboards);
+            if (isAdministratorUser(chatId)) {
+                sendReply(chatId, Strings.DOG_SHELTER_GREETINGS, keyboards.controlMainMenu);
+            } else {
+                sendReply(chatId, Strings.DOG_SHELTER_GREETINGS, keyboards.mainMenuKeyboards);
+            }
         } else if (messageText.equals(MenuItemsNames.CAT_SHELTER_CHOOSE)) {
             choosedSheltersForUsers.put(chatId, ShelterType.CAT_SHELTER);
-            sendReply(chatId, Strings.CAT_SHELTER_GREETINGS, keyboards.mainMenuKeyboards);
+            if (isAdministratorUser(chatId)) {
+                sendReply(chatId, Strings.CAT_SHELTER_GREETINGS, keyboards.controlMainMenu);
+            } else {
+                sendReply(chatId, Strings.CAT_SHELTER_GREETINGS, keyboards.mainMenuKeyboards);
+            }
         } else {
             sendReply(chatId, SHELTER_MENU_GREETINGS, keyboards.shelterMenu);
         }
@@ -114,7 +122,14 @@ public class MenuService {
     }
 
     private void sendReply(long chatId, String replyMessageText, Keyboard keyboard) {
+/*        SendMessage message = new SendMessage(chatId, replyMessageText);
+        message.replyMarkup(keyboard);
+        telegramBot.execute(message);*/
         SendMessage message = new SendMessage(chatId, replyMessageText);
+        sendReply(message, keyboard);
+    }
+
+    private void sendReply(SendMessage message, Keyboard keyboard) {
         message.replyMarkup(keyboard);
         telegramBot.execute(message);
     }
@@ -228,22 +243,36 @@ public class MenuService {
                 shelterService.appointGuardian(inputText);
                 break;
             case CREATE:
-                shelterService.addContact(chatid, inputText);
+                shelterService.addContact(chatid, inputText, choosedSheltersForUsers.get(chatid));
                 break;
             case EXTEND_PROBATION:
                 shelterService.extendProbation(inputText);
+                break;
+            case PROBATION_FAIL:
+                shelterService.failProbation(inputText, chatid);
+                break;
+            case REPORTS_BY_DAY:
+                shelterService.getReportsByDay(inputText, chatid);
+                break;
+            case REPORTS_BY_USER:
+                shelterService.getReportsByUser(inputText, chatid);
                 break;
         }
         adminPendingResponses.remove(chatid);
     }
 
     private void sendAdminMenuAndReply(long chatId, String command, ShelterService shelterService) {
+
         switch (command) {
             case AdminMenuItems.TO_MAIN_MENU:
                 sendReply(chatId, DEFAULT_MESSAGE, keyboards.controlMainMenu);
                 break;
             case AdminMenuItems.TO_CONTACTS_MENU:
                 sendReply(chatId, CONTACTS_MENU, keyboards.contactsControlMenu);
+                break;
+            case AdminMenuItems.TO_SHELTER_MENU:
+                choosedSheltersForUsers.remove(chatId);
+                sendReply(chatId, CONTACTS_MENU, keyboards.shelterMenu);
                 break;
             case AdminMenuItems.DELETE_CONTACT:
                 adminPendingResponses.put(chatId, AdminResponses.DELETE);
@@ -261,15 +290,29 @@ public class MenuService {
                 adminPendingResponses.put(chatId, AdminResponses.CREATE);
                 sendReply(chatId, ADD_CONTACT, keyboards.contactsControlMenu);
                 break;
-            case AdminMenuItems.TO_REPORTS_MENU:
-                sendReply(chatId, REPORTS_MENU, keyboards.reportsControlMenu);
+            case AdminMenuItems.PROBATION_FAIL:
+                adminPendingResponses.put(chatId, AdminResponses.PROBATION_FAIL);
+                sendReply(chatId, CHOOSE_FAILER, keyboards.contactsControlMenu);
                 break;
             case AdminMenuItems.PRINT_CONTACTS_LIST:
                 String contactsAsString = shelterService.printContactsList();
                 sendReply(chatId, contactsAsString, keyboards.contactsControlMenu);
                 break;
+            case AdminMenuItems.TO_REPORTS_MENU:
+                sendReply(chatId, REPORTS_MENU, keyboards.reportsControlMenu);
+                break;
+            case AdminMenuItems.REPORTS_BY_DAY:
+                adminPendingResponses.put(chatId, AdminResponses.REPORTS_BY_DAY);
+                sendReply(chatId, GET_REPORTS_BY_DAY, keyboards.reportsControlMenu);
+                break;
+            case AdminMenuItems.REPORTS_BY_USER:
+                adminPendingResponses.put(chatId, AdminResponses.REPORTS_BY_USER);
+                sendReply(chatId, GET_REPORTS_BY_USER, keyboards.reportsControlMenu);
+                break;
+
+
             default:
-                sendReply(chatId, DEFAULT_MESSAGE, keyboards.mainMenuKeyboards);
+                sendReply(chatId, DEFAULT_MESSAGE, keyboards.controlMainMenu);
                 break;
         }
     }

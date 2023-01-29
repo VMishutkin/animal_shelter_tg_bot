@@ -5,18 +5,15 @@ import com.pengrad.telegrambot.model.Message;
 import com.pengrad.telegrambot.model.PhotoSize;
 import com.pengrad.telegrambot.request.GetFile;
 import com.pengrad.telegrambot.request.SendMessage;
-import com.pengrad.telegrambot.request.SendPhoto;
 import com.pengrad.telegrambot.response.GetFileResponse;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import pro.sky.telegrambot.entity.Person;
-import pro.sky.telegrambot.entity.Report;
+import pro.sky.telegrambot.constant.ShelterType;
+import pro.sky.telegrambot.entity.*;
 import pro.sky.telegrambot.exception.TelegramBotExceptionAPI;
-import pro.sky.telegrambot.entity.Shelter;
-import pro.sky.telegrambot.repository.ReportRepository;
 
-import java.io.IOException;
 import java.time.LocalDate;
+import java.util.List;
 import java.util.Objects;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -41,10 +38,17 @@ public class ShelterService {
         this.telegramBot = telegramBot;
     }
 
-    public void getContactFromChat(Message inputMessage) {
+    public void getContactFromChat(Message inputMessage, ShelterType shelterType) {
         long chatId = inputMessage.chat().id();
         String text = inputMessage.text() + " @" + inputMessage.from().username();
-        addContact(chatId, text);
+        SendMessage reply;
+        if (addContact(chatId, text, shelterType)) {
+            reply = new SendMessage(chatId, "Контакт сохранен");
+            telegramBot.execute(reply);
+        } else {
+            reply = new SendMessage(chatId, "Не удалось сохранить контакт");
+            telegramBot.execute(reply);
+        }
     }
 
     public void saveContact(Person person) {
@@ -52,21 +56,26 @@ public class ShelterService {
     }
 
 
-
-    public void getReport(Message message) {
-        Report report = new Report();
+    public void getReport(Message message, ShelterType shelterType) {
+        Report report;
+        if (shelterType == ShelterType.CAT_SHELTER)
+            report = new CatShelterReport();
+        else {
+            report = new DogShelterReport();
+        }
         report.setUsername(message.chat().username());
+        try {
         report.setMessage(message.caption());
         report.setDateReport(LocalDate.now());
         PhotoSize photoSize = message.photo()[1];
         GetFile getFile = new GetFile(photoSize.fileId());
         GetFileResponse getFileResponse = telegramBot.execute(getFile);
-        try {
+
             byte[] image = telegramBot.getFileContent(getFileResponse.file());
 
             report.setPhoto(image);
             reportService.saveReport(report);
-        } catch (IOException e) {
+        } catch (Exception e) {
             logger.error("Ошибка чтения или записи отчёта");
         } finally {
             String text = "Отчёт не сохранён, попытайтесь его отправить заново";
@@ -85,15 +94,13 @@ public class ShelterService {
             }
             SendMessage reply = new SendMessage(message.chat().id(), text);
             telegramBot.execute(reply);
-            SendPhoto sendPhoto = new SendPhoto(message.chat().id(), reportService.getReport(1l).getPhoto());
-            telegramBot.execute(sendPhoto);
         }
     }
 
     public void getRequest(Message inputMessage) {
         String nickName = inputMessage.from().username();
         String requestText = inputMessage.text();
-        SendMessage messageVolunteer = new SendMessage(inputMessage.chat().id(), MESSAGE_FOR_VOLUNTEER + "\n " + "@" + nickName + "\n" + requestText);
+        SendMessage messageVolunteer = new SendMessage(volunteerChatId, MESSAGE_FOR_VOLUNTEER + "\n " + "@" + nickName + "\n" + requestText);
         telegramBot.execute(messageVolunteer);
         SendMessage replyMessage = new SendMessage(inputMessage.chat().id(), THANKS_FOR_REQUEST);
         telegramBot.execute(replyMessage);
@@ -131,11 +138,9 @@ public class ShelterService {
         shelter.updateInfoAboutShelter();
     }
 
-    public String getGreetings(){
-       return shelter.getGreetings();
+    public String getGreetings() {
+        return shelter.getGreetings();
     }
-
-
 
 
     public String getTransportationRecommendations() {
@@ -171,12 +176,12 @@ public class ShelterService {
             LocalDate endDate = LocalDate.now().plusDays(30);
             guardian.setEndProbationDate(endDate);
             personService.savePerson(guardian);
-        }catch (TelegramBotExceptionAPI e){
+        } catch (TelegramBotExceptionAPI e) {
             logger.error("Ошибка. Изменение сущности не возможно");
         }
     }
 
-    public void addContact(long chatId, String inputText) {
+    public boolean addContact(long chatId, String inputText, ShelterType shelterType) {
         String parsedPhoneString = "";
         String contactNameAndUserName = "";
         Person newContact;
@@ -203,29 +208,32 @@ public class ShelterService {
             } else if (formattedPhoneString.charAt(0) == '7') {
                 formattedPhoneString = "7" + formattedPhoneString.substring(1);
             }
-            newContact = new Person(userName, formattedPhoneString, contactName, chatId);
+
+            newContact = (shelterType == ShelterType.CAT_SHELTER) ?
+                    new CatShelterPerson(userName, formattedPhoneString, contactName, chatId)
+                    : new DogShelterPerson(userName, formattedPhoneString, contactName, chatId)
+            ;
         } catch (TelegramBotExceptionAPI e) {
-            newContact = null;
             logger.error("Ошибка. Контакт не удалось сохранить");
+            return false;
         }
-        if (newContact != null) {
-            saveContact(newContact);
-        }
+        saveContact(newContact);
+        return true;
     }
 
     public void extendProbation(String message) {
         try {
-            String idString= message.substring(0, message.indexOf(" "));
+            String idString = message.substring(0, message.indexOf(" "));
             Long id = Long.valueOf(idString);
             String daysAdd = message.substring(message.indexOf(" ") + 1);
             int days = Integer.parseInt(daysAdd);
 
-            Person guardian = personService.getPerson(Long.valueOf(id));
+            Person guardian = personService.getPerson(id);
             LocalDate endDate = guardian.getEndProbationDate();
             guardian.setEndProbationDate(endDate.plusDays(days));
             personService.savePerson(guardian);
             notificationExtendProbation(guardian.getChatId(), days);
-        }catch (TelegramBotExceptionAPI e){
+        } catch (TelegramBotExceptionAPI e) {
             logger.error("Ошибка. Изменение не сохранено");
         }
     }
@@ -238,8 +246,27 @@ public class ShelterService {
 
     public String printContactsList() {
         return personService.getAllPersons().stream().map(Objects::toString).collect(Collectors.joining("\n"));
- //       return personRepository.findAll().stream().map(Objects::toString).collect(Collectors.joining("\n"));
+        //       return personRepository.findAll().stream().map(Objects::toString).collect(Collectors.joining("\n"));
     }
 
 
+    public void failProbation(String inputText,Long chatID) {
+        if(personService.failProbation(inputText)){
+            SendMessage failMessage = new SendMessage(chatID, FAIL_MESSAGE);
+            telegramBot.execute(failMessage);
+        }else {
+            SendMessage voulonteerMessage = new SendMessage(volunteerChatId, "Ошибка отмены испытательного срока");
+            telegramBot.execute(voulonteerMessage);
+        }
+    }
+
+    public List<Report> getReportsByDay(String inputText, long chatid) {
+        return reportService.getAllReportsDaily(LocalDate.parse(inputText));
+    }
+
+    public void getReportsByUser(String inputText, long chatid) {
+       List<Report> reports = reportService.getAllReportsByPerson(inputText);
+      //  SendMessage reply = new SendMessage(volunteerChatId, reportsString);
+    //    telegramBot.execute(reply);
+    }
 }

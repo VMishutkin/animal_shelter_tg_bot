@@ -4,24 +4,41 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="7a051d27-b46d-4953-86d0-dd86aae003a2" name="Changes" comment="вернул все наследования назад">
-      <change afterPath="$PROJECT_DIR$/telegram-bot-command/src/main/java/pro/sky/telegrambot/service/CatShelterPersonService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/telegram-bot-command/src/main/java/pro/sky/telegrambot/service/DogShelterPersonService.java" afterDir="false" />
+    <list default="true" id="7a051d27-b46d-4953-86d0-dd86aae003a2" name="Changes" comment="сделал сохранение отчетов рразных приютов">
+      <change afterPath="$PROJECT_DIR$/telegram-bot-command/src/main/java/pro/sky/telegrambot/service/CatShelterPersonScheduler.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/telegram-bot-command/src/main/java/pro/sky/telegrambot/service/DogShelterPersonScheduler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/telegram-bot-command/src/main/java/pro/sky/telegrambot/button/ReplyKeyboards.java" beforeDir="false" afterPath="$PROJECT_DIR$/telegram-bot-command/src/main/java/pro/sky/telegrambot/button/ReplyKeyboards.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/telegram-bot-command/src/main/java/pro/sky/telegrambot/constant/AdminMenuItems.java" beforeDir="false" afterPath="$PROJECT_DIR$/telegram-bot-command/src/main/java/pro/sky/telegrambot/constant/AdminMenuItems.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/telegram-bot-command/src/main/java/pro/sky/telegrambot/constant/AdminResponses.java" beforeDir="false" afterPath="$PROJECT_DIR$/telegram-bot-command/src/main/java/pro/sky/telegrambot/constant/AdminResponses.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/telegram-bot-command/src/main/java/pro/sky/telegrambot/constant/ChatSettings.java" beforeDir="false" afterPath="$PROJECT_DIR$/telegram-bot-command/src/main/java/pro/sky/telegrambot/constant/ChatSettings.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/telegram-bot-command/src/main/java/pro/sky/telegrambot/constant/Strings.java" beforeDir="false" afterPath="$PROJECT_DIR$/telegram-bot-command/src/main/java/pro/sky/telegrambot/constant/Strings.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/telegram-bot-command/src/main/java/pro/sky/telegrambot/controller/PersonController.java" beforeDir="false" afterPath="$PROJECT_DIR$/telegram-bot-command/src/main/java/pro/sky/telegrambot/controller/PersonController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/telegram-bot-command/src/main/java/pro/sky/telegrambot/controller/ReportController.java" beforeDir="false" afterPath="$PROJECT_DIR$/telegram-bot-command/src/main/java/pro/sky/telegrambot/controller/ReportController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/telegram-bot-command/src/main/java/pro/sky/telegrambot/entity/Animal.java" beforeDir="false" afterPath="$PROJECT_DIR$/telegram-bot-command/src/main/java/pro/sky/telegrambot/entity/Animal.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/telegram-bot-command/src/main/java/pro/sky/telegrambot/entity/Cat.java" beforeDir="false" afterPath="$PROJECT_DIR$/telegram-bot-command/src/main/java/pro/sky/telegrambot/entity/Cat.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/telegram-bot-command/src/main/java/pro/sky/telegrambot/entity/CatShelterPerson.java" beforeDir="false" afterPath="$PROJECT_DIR$/telegram-bot-command/src/main/java/pro/sky/telegrambot/entity/CatShelterPerson.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/telegram-bot-command/src/main/java/pro/sky/telegrambot/entity/CatShelterReport.java" beforeDir="false" afterPath="$PROJECT_DIR$/telegram-bot-command/src/main/java/pro/sky/telegrambot/entity/CatShelterReport.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/telegram-bot-command/src/main/java/pro/sky/telegrambot/entity/Dog.java" beforeDir="false" afterPath="$PROJECT_DIR$/telegram-bot-command/src/main/java/pro/sky/telegrambot/entity/Dog.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/telegram-bot-command/src/main/java/pro/sky/telegrambot/entity/DogShelterPerson.java" beforeDir="false" afterPath="$PROJECT_DIR$/telegram-bot-command/src/main/java/pro/sky/telegrambot/entity/DogShelterPerson.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/telegram-bot-command/src/main/java/pro/sky/telegrambot/entity/DogShelterReport.java" beforeDir="false" afterPath="$PROJECT_DIR$/telegram-bot-command/src/main/java/pro/sky/telegrambot/entity/DogShelterReport.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/telegram-bot-command/src/main/java/pro/sky/telegrambot/entity/Person.java" beforeDir="false" afterPath="$PROJECT_DIR$/telegram-bot-command/src/main/java/pro/sky/telegrambot/entity/Person.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/telegram-bot-command/src/main/java/pro/sky/telegrambot/entity/Report.java" beforeDir="false" afterPath="$PROJECT_DIR$/telegram-bot-command/src/main/java/pro/sky/telegrambot/entity/Report.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/telegram-bot-command/src/main/java/pro/sky/telegrambot/repository/CatShelterPersonRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/telegram-bot-command/src/main/java/pro/sky/telegrambot/repository/CatShelterPersonRepository.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/telegram-bot-command/src/main/java/pro/sky/telegrambot/repository/DogShelterPersonRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/telegram-bot-command/src/main/java/pro/sky/telegrambot/repository/DogShelterPersonRepository.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/telegram-bot-command/src/main/java/pro/sky/telegrambot/repository/PersonRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/telegram-bot-command/src/main/java/pro/sky/telegrambot/repository/PersonRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/telegram-bot-command/src/main/java/pro/sky/telegrambot/repository/ReportRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/telegram-bot-command/src/main/java/pro/sky/telegrambot/repository/ReportRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/telegram-bot-command/src/main/java/pro/sky/telegrambot/service/CatShelterPersonService.java" beforeDir="false" afterPath="$PROJECT_DIR$/telegram-bot-command/src/main/java/pro/sky/telegrambot/service/CatShelterPersonService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/telegram-bot-command/src/main/java/pro/sky/telegrambot/service/CatShelterService.java" beforeDir="false" afterPath="$PROJECT_DIR$/telegram-bot-command/src/main/java/pro/sky/telegrambot/service/CatShelterService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/telegram-bot-command/src/main/java/pro/sky/telegrambot/service/DogShelterService.java" beforeDir="false" afterPath="$PROJECT_DIR$/telegram-bot-command/src/main/java/pro/sky/telegrambot/service/DogShelterService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/telegram-bot-command/src/main/java/pro/sky/telegrambot/service/DogShelterPersonService.java" beforeDir="false" afterPath="$PROJECT_DIR$/telegram-bot-command/src/main/java/pro/sky/telegrambot/service/DogShelterPersonService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/telegram-bot-command/src/main/java/pro/sky/telegrambot/service/MenuService.java" beforeDir="false" afterPath="$PROJECT_DIR$/telegram-bot-command/src/main/java/pro/sky/telegrambot/service/MenuService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/telegram-bot-command/src/main/java/pro/sky/telegrambot/service/PersonService.java" beforeDir="false" afterPath="$PROJECT_DIR$/telegram-bot-command/src/main/java/pro/sky/telegrambot/service/PersonService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/telegram-bot-command/src/main/java/pro/sky/telegrambot/service/ReportService.java" beforeDir="false" afterPath="$PROJECT_DIR$/telegram-bot-command/src/main/java/pro/sky/telegrambot/service/ReportService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/telegram-bot-command/src/main/java/pro/sky/telegrambot/service/ShelterService.java" beforeDir="false" afterPath="$PROJECT_DIR$/telegram-bot-command/src/main/java/pro/sky/telegrambot/service/ShelterService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/telegram-bot-command/src/main/java/pro/sky/telegrambot/service/TelegramBotScheduler.java" beforeDir="false" afterPath="$PROJECT_DIR$/telegram-bot-command/src/main/java/pro/sky/telegrambot/service/TelegramBotScheduler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/telegram-bot-command/src/main/java/pro/sky/telegrambot/service/TelegramBotUpdatesListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/telegram-bot-command/src/main/java/pro/sky/telegrambot/service/TelegramBotUpdatesListener.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/telegram-bot-command/src/test/java/pro/sky/telegrambot/service/ReportServiceTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/telegram-bot-command/src/test/java/pro/sky/telegrambot/service/ReportServiceTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -74,10 +91,10 @@
     &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
     &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
     &quot;last_opened_file_path&quot;: &quot;C:/Users/mishutkin.va/IdeaProjects/telegram-bot-command/telegram-bot-command/src/main/java/pro/sky/telegrambot/TelegramBotApplication.java&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Project&quot;,
     &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
     &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
-    &quot;spring.configuration.checksum&quot;: &quot;aa09baf64c1019913e94b110ea55cb5c&quot;
+    &quot;spring.configuration.checksum&quot;: &quot;9558997ad9479e1d810e1c06c35d3d38&quot;
   },
   &quot;keyToStringList&quot;: {
     &quot;DatabaseDriversLRU&quot;: [
@@ -106,6 +123,8 @@
       <workItem from="1674033341293" duration="338000" />
       <workItem from="1674104289286" duration="5183000" />
       <workItem from="1674184832005" duration="8660000" />
+      <workItem from="1674576050189" duration="3913000" />
+      <workItem from="1674670374544" duration="17825000" />
     </task>
     <task id="LOCAL-00001" summary="проверил поправил dev">
       <created>1673945267256</created>
@@ -150,22 +169,36 @@
     <MESSAGE value="не работает наследование репозиториев" />
     <MESSAGE value="Убрал из ShelterService репозитории" />
     <MESSAGE value="вернул все наследования назад" />
-    <option name="LAST_COMMIT_MESSAGE" value="вернул все наследования назад" />
+    <MESSAGE value="сделал сохранение отчетов рразных приютов" />
+    <option name="LAST_COMMIT_MESSAGE" value="сделал сохранение отчетов рразных приютов" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/telegram-bot-command/src/main/java/pro/sky/telegrambot/service/MenuService.java</url>
-          <line>89</line>
-          <option name="timeStamp" value="2" />
+          <line>257</line>
+          <option name="timeStamp" value="12" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/telegram-bot-command/src/main/java/pro/sky/telegrambot/service/ShelterService.java</url>
-          <line>50</line>
-          <option name="timeStamp" value="3" />
+          <url>file://$PROJECT_DIR$/telegram-bot-command/src/main/java/pro/sky/telegrambot/service/ReportService.java</url>
+          <line>29</line>
+          <option name="timeStamp" value="13" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/telegram-bot-command/src/main/java/pro/sky/telegrambot/service/ReportService.java</url>
+          <line>30</line>
+          <option name="timeStamp" value="15" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
+    <watches-manager>
+      <configuration name="SpringBootApplicationConfigurationType">
+        <watch expression="((DogShelterPersonService)personService).personRepository" custom="pro.sky.telegrambot.service.DogShelterPersonService" />
+      </configuration>
+    </watches-manager>
+  </component>
+  <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/telegram_bot_command$TelegramBotApplication.ic" NAME="TelegramBotApplication Coverage Results" MODIFIED="1670158920483" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
   </component>
 </project>

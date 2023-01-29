@@ -5,9 +5,10 @@ import java.time.LocalDate;
 /**
  * Класс для сохранения отчетов в БД
  */
-@Entity
-@Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
-public class Report {
+@Entity(name="report")
+@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
+@DiscriminatorColumn(name="shelter", discriminatorType = DiscriminatorType.STRING)
+public abstract class Report {
     /**
      * Первичный ключ записи в БД
      */

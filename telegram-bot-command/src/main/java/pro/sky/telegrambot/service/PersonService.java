@@ -20,9 +20,10 @@ public  class PersonService {
     private final PersonRepository personRepository;
     private final Logger logger = LoggerFactory.getLogger(PersonService.class);
 
-    protected PersonService(PersonRepository personRepository) {
+    PersonService(PersonRepository personRepository) {
         this.personRepository = personRepository;
     }
+
 
 
     /**
@@ -42,7 +43,7 @@ public  class PersonService {
      */
     public Person getPerson(Long id) {
 
-        return (Person) personRepository.findById(id).orElseThrow();
+        return (Person) personRepository.findById(Long.valueOf(id)).orElseThrow();
     }
 
     /**
@@ -81,4 +82,18 @@ public  class PersonService {
     }
 
 
+    public boolean failProbation(String id) {
+        Person failedPerson;
+        try {
+            failedPerson = (Person) personRepository.findById(Long.valueOf(id)).orElseThrow();
+            failedPerson.setAdoptive(false);
+            failedPerson.setEndProbationDate(null);
+            failedPerson.setStartProbationDate(null);
+            personRepository.save(failedPerson);
+            return true;
+        }catch (Exception e){
+            logger.error("не нашелся контакт");
+        }
+        return false;
+    }
 }
