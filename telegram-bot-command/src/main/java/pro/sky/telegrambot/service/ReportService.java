@@ -27,9 +27,9 @@ public class ReportService {
      * @return List<Report>
      */
     public List<Report> getAllReportsByPerson(String username) {
-       // return reportRepository.findReportsByUser();
-       // return reportRepository.findReportByUsername("Vladfame0_0");
-    return     reportRepository.getReportsByUser();
+        // return reportRepository.findReportsByUser();
+        // return reportRepository.findReportByUsername("Vladfame0_0");
+        return reportRepository.findReportByUsername(username);
     }
 
     /**
@@ -49,6 +49,9 @@ public class ReportService {
     public Report getReport(long id) {
         return reportRepository.findById(id).orElseThrow();
     }
+
+
+
 
 
 }

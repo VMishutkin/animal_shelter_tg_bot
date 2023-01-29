@@ -36,6 +36,7 @@ public class Strings {
     public static final String PRINT_CONTACTS_LIST = "Список сотрудников:";
     public static final String ADMIN_MAIN_MENU = "Вы попали в главное меню администратора, выберите подменю";
     public static final String DEFAULT_MESSAGE = "Ошибка ввода данных. Попробуйте снова и внимательно!";
+    public static final String MAIN_MESSAGE = "Добро пожаловать в главное меню администраторов";
 
     public static final String COMPLETE_MESSAGE = "Поздравляю, вы прошли испытание! Питомец ваш навеки ";
     public static final String FAIL_MESSAGE = "Вы не прошли испытание. С вами сяжется волонтёр или свяжитесь с ним сами ";
@@ -47,6 +48,6 @@ public class Strings {
     public static final String DOG_SHELTER_GREETINGS = "Добро пожаловать в наш приют для собак. \nВы можете воспользоваться одним из пунктов главного меню ниже ";;
     public static final String CAT_SHELTER_GREETINGS = "Добро пожаловать в наш приют для Кошек. \nВыберите самый замурчательный пункт меню. мяу";;
     public static final String CHOOSED_WRONG_SHELTER = "Этот пункт доступен только в собачем приюте";
-    public static final String GET_REPORTS_BY_DAY = "Введите дату, за которую хотите посмотреть отчеты";
+    public static final String GET_REPORTS_BY_DAY = "Введите дату в формате dd.MM.yyyy, за которую хотите посмотреть отчеты";
     public static final String GET_REPORTS_BY_USER = "Введите имя пользователя, чтобы посмотреть его отчеты";
 }

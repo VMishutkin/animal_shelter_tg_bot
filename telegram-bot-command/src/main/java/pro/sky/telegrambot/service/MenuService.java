@@ -265,7 +265,7 @@ public class MenuService {
 
         switch (command) {
             case AdminMenuItems.TO_MAIN_MENU:
-                sendReply(chatId, DEFAULT_MESSAGE, keyboards.controlMainMenu);
+                sendReply(chatId, MAIN_MESSAGE, keyboards.controlMainMenu);
                 break;
             case AdminMenuItems.TO_CONTACTS_MENU:
                 sendReply(chatId, CONTACTS_MENU, keyboards.contactsControlMenu);
@@ -309,7 +309,6 @@ public class MenuService {
                 adminPendingResponses.put(chatId, AdminResponses.REPORTS_BY_USER);
                 sendReply(chatId, GET_REPORTS_BY_USER, keyboards.reportsControlMenu);
                 break;
-
 
             default:
                 sendReply(chatId, DEFAULT_MESSAGE, keyboards.controlMainMenu);
