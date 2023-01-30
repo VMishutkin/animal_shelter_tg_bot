@@ -44,7 +44,7 @@ public class ReportController {
     )
     @GetMapping("username")
     public List<Report> getAllReportsPerson(@Parameter(description = "Введите имя пользователя контакта", example = "ivan") @RequestParam String username) {
-        return reportService.getAllReportsPerson(username);
+        return reportService.getAllReportsByPerson(username);
     }
 
 

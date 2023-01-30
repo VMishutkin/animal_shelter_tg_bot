@@ -46,7 +46,7 @@ public class PersonServiceTest {
     @Test
     void createPerson() {
         when(personRepository.save(person)).thenReturn(person);
-        assertEquals(personService.createPerson(person), person);
+        assertEquals(personService.savePerson(person), person);
     }
 
     @Test

@@ -4,10 +4,10 @@ import com.fasterxml.jackson.annotation.JsonBackReference;
 
 import javax.persistence.*;
 
-@Entity
-@Table(name = "animal")
-public class Animal {
-
+@Entity(name="animal")
+@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
+@DiscriminatorColumn(name="animal_type")
+public abstract class Animal {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -15,8 +15,10 @@ public class Animal {
     private String kindOfAnimal;
     private Long age;
     private Boolean invalid;
+    @ManyToOne
     @JoinColumn(name = "person_id")
-    private Long personId;
+    @JsonBackReference
+    private CatShelterPerson person;
 
     public Long getId() {
         return id;
@@ -58,12 +60,12 @@ public class Animal {
         this.invalid = invalid;
     }
 
-    public Long getPersonId() {
-        return personId;
+    public Person getPerson() {
+        return person;
     }
 
-    public void setPersonId(Long personId) {
-        this.personId = personId;
+    public void setPerson(CatShelterPerson person) {
+        this.person = person;
     }
 
 }

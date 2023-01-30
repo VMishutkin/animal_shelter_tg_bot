@@ -22,21 +22,36 @@ public class ReportService {
 
     /**
      * Возвращает список отчётов определенного контакта
+     *
      * @param username
      * @return List<Report>
      */
-    public List<Report> getAllReportsPerson(String username) {
-        return reportRepository.findByUsernameIgnoreCase(username);
+    public List<Report> getAllReportsByPerson(String username) {
+        // return reportRepository.findReportsByUser();
+        // return reportRepository.findReportByUsername("Vladfame0_0");
+        return reportRepository.findReportByUsername(username);
     }
 
     /**
      * Возвращает отчётов за определенный день
+     *
      * @param localDate
      * @return List<Report>
      */
     public List<Report> getAllReportsDaily(LocalDate localDate) {
-        return  reportRepository.findByDateReport(localDate);
+        return reportRepository.findByDateReport(localDate);
     }
+
+    public Report saveReport(Report report) {
+        return reportRepository.save(report);
+    }
+
+    public Report getReport(long id) {
+        return reportRepository.findById(id).orElseThrow();
+    }
+
+
+
 
 
 }

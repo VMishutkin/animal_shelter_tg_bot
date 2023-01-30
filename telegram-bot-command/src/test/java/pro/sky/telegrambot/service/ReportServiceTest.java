@@ -37,8 +37,8 @@ public class ReportServiceTest {
 
     @Test
     void getAllReportsPerson() {
-        when(reportRepository.findByUsernameIgnoreCase(USERNAME)).thenReturn(List.of(report));
-        assertEquals(reportService.getAllReportsPerson(USERNAME), List.of(report));
+      //  when(reportRepository.findByUsernameIgnoreCase(USERNAME)).thenReturn(List.of(report));
+        assertEquals(reportService.getAllReportsByPerson(USERNAME), List.of(report));
     }
 
     @Test

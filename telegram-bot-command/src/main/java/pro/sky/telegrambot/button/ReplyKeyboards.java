@@ -60,7 +60,7 @@ public class ReplyKeyboards {
     public ReplyKeyboards() {
         controlMainMenu = generateControlMainKeyboard();
         contactsControlMenu = generateContactsMenuKeyboard();
-        reportsControlMenu = generateControlTwoKeyboard();
+        reportsControlMenu = generateControlReportsKeyboard();
 
 
         shelterMenu = generateShelterMenuKeyboard();
@@ -180,7 +180,8 @@ public class ReplyKeyboards {
         ReplyKeyboardMarkup replyKeyboardMarkup = new ReplyKeyboardMarkup(
                 new KeyboardButton(AdminMenuItems.TO_CONTACTS_MENU),
                 new KeyboardButton(AdminMenuItems.TO_REPORTS_MENU),
-                new KeyboardButton(AdminMenuItems.TO_FILES_MENU)
+        //        new KeyboardButton(AdminMenuItems.TO_FILES_MENU),
+        new KeyboardButton(AdminMenuItems.TO_SHELTER_MENU)
         );
         replyKeyboardMarkup.resizeKeyboard(true);
         replyKeyboardMarkup.oneTimeKeyboard(true);
@@ -198,11 +199,13 @@ public class ReplyKeyboards {
                         new KeyboardButton(AdminMenuItems.EXTEND_PROBATION)
                 },
                 new KeyboardButton[]{
-                        new KeyboardButton(AdminMenuItems.APPOINT_GUARDIAN),
+
+                        new KeyboardButton(AdminMenuItems.PROBATION_FAIL),
+                        new KeyboardButton(AdminMenuItems.APPOINT_GUARDIAN)
                 },
                 new KeyboardButton[]{
 
-                        new KeyboardButton(AdminMenuItems.WATCH_DEBTORS),
+                 //       new KeyboardButton(AdminMenuItems.WATCH_DEBTORS),
                         new KeyboardButton(AdminMenuItems.TO_MAIN_MENU)
                 });
         replyKeyboardMarkup.resizeKeyboard(true);
@@ -210,14 +213,14 @@ public class ReplyKeyboards {
         return replyKeyboardMarkup;
     }
 
-    public Keyboard generateControlTwoKeyboard() {
+    public Keyboard generateControlReportsKeyboard() {
         ReplyKeyboardMarkup replyKeyboardMarkup = new ReplyKeyboardMarkup(
                 new KeyboardButton[]{
-                        new KeyboardButton("Продлить срок"),
-                        new KeyboardButton("Список должников")
+                        new KeyboardButton(AdminMenuItems.REPORTS_BY_USER),
+                        new KeyboardButton(AdminMenuItems.REPORTS_BY_DAY),
                 },
                 new KeyboardButton[]{
-                        new KeyboardButton("Вернуться назад")
+                        new KeyboardButton(AdminMenuItems.TO_MAIN_MENU)
                 });
         replyKeyboardMarkup.resizeKeyboard(true);
         replyKeyboardMarkup.oneTimeKeyboard(true);

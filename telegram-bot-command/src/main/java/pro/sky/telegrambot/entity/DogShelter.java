@@ -1,4 +1,4 @@
-package pro.sky.telegrambot.model;
+package pro.sky.telegrambot.entity;
 
 import org.springframework.stereotype.Component;
 import pro.sky.telegrambot.constant.FileNames;

@@ -1,3 +1,5 @@
+/*
+
 package pro.sky.telegrambot.controller;
 
 import io.swagger.v3.oas.annotations.Operation;
@@ -9,7 +11,6 @@ import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import pro.sky.telegrambot.entity.Animal;
 import pro.sky.telegrambot.entity.Person;
 import pro.sky.telegrambot.service.PersonService;
 
@@ -86,7 +87,7 @@ public class PersonController {
     )
     @PostMapping
     public Person createPerson(@RequestBody Person person) {
-        return personService.createPerson(person);
+        return personService.savePerson(person);
     }
 
 
@@ -123,3 +124,5 @@ public class PersonController {
     }
 
 }
+
+*/

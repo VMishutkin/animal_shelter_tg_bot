@@ -1,4 +1,4 @@
-package pro.sky.telegrambot.model;
+package pro.sky.telegrambot.entity;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

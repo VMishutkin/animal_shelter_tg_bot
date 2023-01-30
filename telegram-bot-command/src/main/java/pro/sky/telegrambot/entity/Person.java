@@ -7,9 +7,8 @@ import java.util.Objects;
 /**
  *Класс для сохранения контактов в БД.
  * */
-@Entity
-@Table(name = "person")
-public class Person {
+@MappedSuperclass
+public abstract class Person {
 
     /**
      * Первичный ключ для записи в БД

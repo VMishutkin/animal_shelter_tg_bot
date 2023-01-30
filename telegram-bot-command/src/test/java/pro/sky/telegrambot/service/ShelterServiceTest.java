@@ -7,13 +7,11 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 import pro.sky.telegrambot.entity.Person;
-import pro.sky.telegrambot.model.Shelter;
+import pro.sky.telegrambot.entity.Shelter;
 import pro.sky.telegrambot.repository.PersonRepository;
 
 import java.time.LocalDate;
 import java.util.List;
-import java.util.Objects;
-import java.util.stream.Collectors;
 
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.*;
