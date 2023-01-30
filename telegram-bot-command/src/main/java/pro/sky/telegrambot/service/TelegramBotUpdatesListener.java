@@ -21,7 +21,6 @@ public class TelegramBotUpdatesListener implements UpdatesListener {
     private TelegramBot telegramBot;
 
 
-
     public TelegramBotUpdatesListener(MenuService menuService, TelegramBot telegramBot) {
         this.menuService = menuService;
         this.telegramBot = telegramBot;
@@ -36,9 +35,9 @@ public class TelegramBotUpdatesListener implements UpdatesListener {
     public int process(List<Update> updates) {
         updates.forEach(update -> {
             logger.info("Processing update: {}", update);
-try {
+            try {
                 menuService.shelterServiceChooser(update.message());
-            }catch (Exception e){
+            } catch (Exception e) {
                 logger.error("не удалось обработать сообщение");
             }
         });

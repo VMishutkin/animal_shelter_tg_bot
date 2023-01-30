@@ -18,7 +18,7 @@ public abstract class Animal {
     @ManyToOne
     @JoinColumn(name = "person_id")
     @JsonBackReference
-    private CatShelterPerson person;
+    private Person person;
 
     public Long getId() {
         return id;
