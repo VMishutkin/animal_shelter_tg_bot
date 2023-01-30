@@ -10,6 +10,8 @@ import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import pro.sky.telegrambot.entity.Animal;
+import pro.sky.telegrambot.entity.Cat;
+import pro.sky.telegrambot.entity.Dog;
 import pro.sky.telegrambot.service.AnimalService;
 
 import java.util.List;
@@ -75,7 +77,7 @@ public class AnimalController {
 
     @Operation(
             requestBody = @io.swagger.v3.oas.annotations.parameters.RequestBody(
-                    description = "Создание новой записи животного",
+                    description = "Создание новой записи кошки",
                     content = @Content(
                             mediaType = MediaType.APPLICATION_JSON_VALUE,
                             schema = @Schema(implementation = Animal.class)
@@ -83,9 +85,27 @@ public class AnimalController {
             ),
             tags = "Animals"
     )
-    @PostMapping
+/*    @PostMapping
     public Animal createAnimal(@RequestBody Animal animal) {
         return animalService.createAnimal(animal);
+    }
+ */   @PostMapping("cat")
+    public Animal createCat(@RequestBody Cat cat) {
+        return animalService.createAnimal(cat);
+    }
+    @Operation(
+            requestBody = @io.swagger.v3.oas.annotations.parameters.RequestBody(
+                    description = "Создание новой записи собаки",
+                    content = @Content(
+                            mediaType = MediaType.APPLICATION_JSON_VALUE,
+                            schema = @Schema(implementation = Animal.class)
+                    )
+            ),
+            tags = "Animals"
+    )
+    @PostMapping("dog")
+    public Animal createDog(@RequestBody Dog dog) {
+        return animalService.createAnimal(dog);
     }
 
 

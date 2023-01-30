@@ -7,6 +7,7 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 import pro.sky.telegrambot.entity.Animal;
+import pro.sky.telegrambot.entity.Cat;
 import pro.sky.telegrambot.repository.AnimalRepository;
 
 import javax.persistence.EntityNotFoundException;
@@ -19,14 +20,14 @@ import static org.mockito.Mockito.*;
 public class AnimalServiceTest {
 
     private static final String KIND_OF_ANIMAL = "dog";
-    static Animal animal = new Animal();
+    static Animal animal = new Cat();
 
     @BeforeEach
     public void SetUp() {
         animal.setId(1L);
         animal.setName("Duck");
         animal.setAge(2L);
-        animal.setKindOfAnimal(KIND_OF_ANIMAL);
+        //animal.setKindOfAnimal(KIND_OF_ANIMAL);
         animal.setInvalid(true);
     }
 

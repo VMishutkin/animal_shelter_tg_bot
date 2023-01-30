@@ -27,7 +27,8 @@ public class AnimalService {
      * @return
      */
     public List<Animal> getAllAnimalsKids(String kindOfAnimal) {
-        return animalRepository.findByKindOfAnimal(kindOfAnimal);
+        return animalRepository.findByType(kindOfAnimal);
+       // return animalRepository.findByKindOfAnimal(kindOfAnimal);
     }
 
     /**

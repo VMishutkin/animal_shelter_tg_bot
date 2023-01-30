@@ -12,13 +12,10 @@ public abstract class Animal {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String name;
-    private String kindOfAnimal;
+    //private String kindOfAnimal;
     private Long age;
     private Boolean invalid;
-    @ManyToOne
-    @JoinColumn(name = "person_id")
-    @JsonBackReference
-    private Person person;
+
 
     public Long getId() {
         return id;
@@ -36,6 +33,7 @@ public abstract class Animal {
         this.name = name;
     }
 
+/*
     public String getKindOfAnimal() {
         return kindOfAnimal;
     }
@@ -43,6 +41,7 @@ public abstract class Animal {
     public void setKindOfAnimal(String kindOfAnimal) {
         this.kindOfAnimal = kindOfAnimal;
     }
+*/
 
     public Long getAge() {
         return age;
@@ -60,12 +59,6 @@ public abstract class Animal {
         this.invalid = invalid;
     }
 
-    public Person getPerson() {
-        return person;
-    }
 
-    public void setPerson(CatShelterPerson person) {
-        this.person = person;
-    }
 
 }
