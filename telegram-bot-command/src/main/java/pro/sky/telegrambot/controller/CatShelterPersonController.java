@@ -1,7 +1,4 @@
-/*
-
 package pro.sky.telegrambot.controller;
-
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.media.ArraySchema;
@@ -11,19 +8,22 @@ import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import pro.sky.telegrambot.entity.CatShelterPerson;
 import pro.sky.telegrambot.entity.Person;
-import pro.sky.telegrambot.service.PersonService;
+import pro.sky.telegrambot.service.CatShelterPersonService;
 
 import java.util.List;
 
 @RestController
-@RequestMapping("person")
-public class PersonController {
+@RequestMapping("person/cat-shelter")
+public class CatShelterPersonController {
 
-    private final PersonService personService;
+    private final CatShelterPersonService personService;
 
-    public PersonController(PersonService personService) {
-        this.personService = personService;
+
+    public CatShelterPersonController(CatShelterPersonService catShelterPersonService) {
+        this.personService = catShelterPersonService;
+
     }
 
 
@@ -86,7 +86,7 @@ public class PersonController {
             tags = "Persons"
     )
     @PostMapping
-    public Person createPerson(@RequestBody Person person) {
+    public Person createPerson(@RequestBody CatShelterPerson person) {
         return personService.savePerson(person);
     }
 
@@ -102,7 +102,7 @@ public class PersonController {
             tags = "Persons"
     )
     @PutMapping
-    public Person editPerson(@RequestBody Person person) {
+    public Person editPerson(@RequestBody CatShelterPerson person) {
         return personService.editPerson(person);
     }
 
@@ -122,7 +122,4 @@ public class PersonController {
         personService.deletePerson(id);
         return ResponseEntity.ok().build();
     }
-
 }
-
-*/

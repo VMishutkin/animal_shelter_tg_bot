@@ -29,8 +29,7 @@ public class Strings {
     public static final String ADD_CONTACT = "Чтобы добавить контакт введите через пробел номер телефона, имя и фамилию и @имя пользователя в Телеграмме,.\n" +
             "Например: 898745212350 Иван Иванов @CrazyPuck";
     public static final String CHOOSE_FAILER = "Введите Id провалившего испытание";
-    public static final String REPORTS_MENU = "Чтобы посмотреть отчёты усыновителя введите его ID.\n" +
-            "Вы модете посмотреть ID в списке усыновителей.\n" + "Например: 156";
+    public static final String REPORTS_MENU = "Здесь вы можете посмотреть отчеты по дням или по пользователю";
     public static final String MAIN_MENU = "Выберите пункт меню";
     public static final String CONTACTS_MENU = "Выберите пункт меню";
     public static final String PRINT_CONTACTS_LIST = "Список сотрудников:";

@@ -56,8 +56,8 @@ public  class PersonService {
      * @param person
      * @return
      */
-    public void savePerson(Person person) {
-        personRepository.save(person);
+    public Person savePerson(Person person) {
+        return (Person) personRepository.save(person);
     }
 
     /**
@@ -66,8 +66,8 @@ public  class PersonService {
      * @param person
      * @return
      */
-    public void editPerson(Person person) {
-        personRepository.save(person);
+    public Person editPerson(Person person) {
+       return (Person) personRepository.save(person);
     }
 
     /**

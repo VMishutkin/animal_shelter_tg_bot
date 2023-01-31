@@ -37,7 +37,9 @@ public class AnimalService {
      * @return
      */
     public Animal getAnimal(Long id) {
-        return  animalRepository.getById(id);
+        Animal found = animalRepository.findById(id).orElseThrow();
+
+        return  found;
     }
 
     /**

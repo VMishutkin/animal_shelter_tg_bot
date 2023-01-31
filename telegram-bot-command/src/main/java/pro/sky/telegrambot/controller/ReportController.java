@@ -67,7 +67,7 @@ public class ReportController {
             tags = "Reports"
     )
     @GetMapping("date")
-    public List<Report> getAllReportsDaily(@Parameter(description = "Введите дату, за которую посмотреть отчёты", example = "2022-12-30") @RequestParam LocalDate date) {
+    public List<Report> getAllReportsDaily(@Parameter(description = "Введите дату, за которую посмотреть отчёты", example = "31.01.2023") @RequestParam LocalDate date) {
         return reportService.getAllReportsDaily(date);
     }
 
