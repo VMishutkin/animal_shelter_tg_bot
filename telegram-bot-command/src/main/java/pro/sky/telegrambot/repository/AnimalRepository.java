@@ -22,4 +22,5 @@ public interface AnimalRepository extends JpaRepository<Animal, Long> {
 
     @Query(value = "SELECT * FROM animal WHERE animal_type = :type", nativeQuery = true)
     List<Animal> findByType(@Param("type")String type);
+
 }

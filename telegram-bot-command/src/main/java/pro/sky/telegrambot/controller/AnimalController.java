@@ -46,7 +46,7 @@ public class AnimalController {
             tags = "Animals"
     )
     @GetMapping("{kindOfAnimal}")
-    public List<Animal> findFacultyStudent(@Parameter(description = "Введите вид животного на английском языке", example = "dog") @PathVariable String kindOfAnimal) {
+    public List<Animal> findAnimalsKind(@Parameter(description = "Введите вид животного на английском языке", example = "dog") @PathVariable String kindOfAnimal) {
         return animalService.getAllAnimalsKids(kindOfAnimal);
     }
 
