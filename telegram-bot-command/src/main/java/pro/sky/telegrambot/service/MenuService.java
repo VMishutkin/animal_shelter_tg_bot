@@ -207,22 +207,12 @@ public class MenuService {
                 sendReply(chatId, replyTextMessage, keyboards.recommendationMenuKeyboard);
                 break;
             case MenuItemsNames.ADOPT_DOG_APPROVED_CYNOLOGYSTS:
-                if (shelterService instanceof DogShelterService) {
-                    DogShelterService dogShelterService = (DogShelterService) shelterService;
-                    replyTextMessage = dogShelterService.getApprovedCynologysts();
+                    replyTextMessage = shelterService.getApprovedCynologysts();
                     sendReply(chatId, replyTextMessage, keyboards.adoptDogMenuKeyboards);
-                } else {
-                    sendReply(chatId, CHOOSED_WRONG_SHELTER, keyboards.adoptDogMenuKeyboards);
-                }
                 break;
             case MenuItemsNames.RECOMMENDATIONS_CYNOLOGYSTS_ADVICES:
-                if (shelterService instanceof DogShelterService) {
-                    DogShelterService dogShelterService = (DogShelterService) shelterService;
-                    replyTextMessage = dogShelterService.getCynologystsAdvices();
+                    replyTextMessage = shelterService.getCynologystsAdvices();
                     sendReply(chatId, replyTextMessage, keyboards.recommendationMenuKeyboard);
-                } else {
-                    sendReply(chatId, CHOOSED_WRONG_SHELTER, keyboards.recommendationMenuKeyboard);
-                }
                 break;
             case MenuItemsNames.ADOPT_DOG_DECLINE_REASONS:
                 replyTextMessage = shelterService.getDeclineReasons();

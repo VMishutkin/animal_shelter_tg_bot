@@ -18,11 +18,13 @@ public class DogShelterService extends ShelterService {
         super(dogShelter, personService, reportService, telegramBot);
     }
 
+    @Override
     public String getApprovedCynologysts() {
         DogShelter dogShelter = (DogShelter) this.getShelter();
         return dogShelter.getApprovedCunologysts();
     }
 
+    @Override
     public String getCynologystsAdvices() {
         DogShelter dogShelter = (DogShelter) this.getShelter();
         return dogShelter.getCynologystsAdvices();

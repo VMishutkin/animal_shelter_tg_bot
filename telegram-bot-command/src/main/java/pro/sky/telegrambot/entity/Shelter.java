@@ -176,4 +176,11 @@ public abstract class Shelter {
         return homeImprovementsForDisabled;
     }
 
+    public String getApprovedCynologysts() {
+        return "в приюте нет кинологов";
+    }
+
+    public String getCynologystsAdvices() {
+        return "в приюте нет кинологов";
+    }
 }

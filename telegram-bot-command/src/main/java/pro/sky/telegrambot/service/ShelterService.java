@@ -235,4 +235,16 @@ public class ShelterService {
     public void addContact(long chatid, String inputText, ShelterType shelterType) {
         personService.addContact(chatid, inputText, shelterType);
     }
+
+    public String getApprovedCynologysts() {
+
+        return shelter.getApprovedCynologysts();
+    }
+
+    public String getCynologystsAdvices() {
+
+        return shelter.getCynologystsAdvices();
+    }
+
+
 }
